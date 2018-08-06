@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t.string: 
+  t.date: 2018-08-06
+  t.time: 2018-08-06 12:08:17
+  t.string: 
+  t.string: 
+  t.text: 
+  t.integer: 
+
+two:
+  t.string: 
+  t.date: 2018-08-06
+  t.time: 2018-08-06 12:08:17
+  t.string: 
+  t.string: 
+  t.text: 
+  t.integer: 
