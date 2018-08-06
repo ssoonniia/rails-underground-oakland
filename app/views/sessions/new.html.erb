@@ -1,1 +1,9 @@
 <h1>Sessions new page!</h1>
+
+<%= form_for @user, url: login_path(@user), method: :post do  |f|%>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%=f.submit 'Log In' %>
+<%end%>
