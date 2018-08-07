@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
+  include ApplicationHelper
 
   def index
-    @events = Events.all
+    @events = Event.all
   end
 
   def new
@@ -9,22 +10,25 @@ class EventsController < ApplicationController
   end
 
   def create
-    if !logged_in
+
+    if !logged_in?
       redirect_to root_path
     end
 
     @event = Event.create(event_params)
-    @event.user = current_user
-    if !@event.save
-      render :edit
+    @event.user_id = current_user.id
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
     end
-    @event.save
   end
 
   def show
-    if !logged_in
+    @event = Event.find_by_id(params[:id])
+    if !logged_in?
       redirect_to root_path
-    elsif !owner
+    elsif !owner?
       redirect_to events_path
     end
   end
@@ -33,7 +37,7 @@ class EventsController < ApplicationController
   end
 
 
-  def private
-    params.require(:event).permit(:name, :date, :time, :location, :cost, :description_id, :user_id)
+  def event_params
+    params.require(:event).permit(:name, :date, :time, :location, :cost, :description, :user_id)
   end
 end

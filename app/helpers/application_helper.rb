@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def owner?
-    @event = event.find_by_id(params[:id])
+    @event = Event.find_by_id(params[:id])
     if @event.user_id = current_user.id
       true
     end
