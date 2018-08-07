@@ -1,8 +1,16 @@
 <h1>Show page!</h1>
 <h1> Welcome <%=@user.username %>
 
-<h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>
-<h3>Check out events happening in <%=link_to'Oakland', events_path %> </h3>
+<h2>Events You Created</h2>
+ <%@user_events.each do |event| %>
+  <p><%=link_to "#{event.name}", event_path(event) %></p>
+<%end%>
 
-<h3><%=link_to 'Create Events', new_event_path %></h3>
+
+<h3>Check out all events happening in <%=link_to 'Oakland', events_path %> </h3>
+
+
+
+<h3><%=link_to 'Create A New Event', new_event_path %></h3>
+<h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>
 <h3><%=link_to 'Log Out', logout_path %> </h3>

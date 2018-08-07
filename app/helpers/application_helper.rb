@@ -18,4 +18,12 @@ module ApplicationHelper
       true
     end
   end
+
+  def user_events
+    @user = current_user
+    Event.all.map do |event|
+      event.user_id == @user.id
+        event
+    end
+  end
 end

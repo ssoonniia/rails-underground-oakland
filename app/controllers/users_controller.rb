@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @user_events = user_events
     if !logged_in?
       redirect_to root_path
     end
