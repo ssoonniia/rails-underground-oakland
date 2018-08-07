@@ -26,11 +26,35 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    #refractor
     if !logged_in?
       redirect_to root_path
     elsif !owner?
       redirect_to events_path
     end
+  end
+
+  def edit
+    @event = Event.find_by_id(params[:id])
+    #refractor
+    if !logged_in?
+      redirect_to root_path
+    elsif !owner?
+      redirect_to events_path
+    end
+  end
+
+  def update
+    @event = Event.find_by_id(params[:id])
+    #refractor
+    if !logged_in?
+      redirect_to root_path
+    elsif !owner?
+      redirect_to events_path
+    end
+    #
+    @event.update(event_params)
+    redirect_to event_path(@event)
   end
 
   def destroy
