@@ -1,0 +1,5 @@
+confirm routes nesting users - events - rsvps
+
+does rsvp have to be create in create? currently created under new because they are RSVPing as soon as they click rsvp
+
+delete route - how to create a get route without writing it out?

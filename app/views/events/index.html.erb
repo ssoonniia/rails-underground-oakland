@@ -5,9 +5,9 @@
   <h3><%= event.cost %></h3>
   <h3><%= event.location %></h3>
   <h3><%= event.description %></h3>
-  <h1><%=link_to 'RSVP', new_rsvp_path %> </h1>
+  <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
   <%if event.user_id == session[:user_id] %>
-    <%=link_to 'Edit Event', edit_event_path(event) %>
+    <%=link_to 'Edit Event', edit_event_path(event) %> <br></br>
     <!--refractor to go to show page and confirm deletion  -->
     <a href="<%=event.id%>/delete">Delete</a>
     <%end%>
