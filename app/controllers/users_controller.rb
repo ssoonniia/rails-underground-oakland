@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
 
   def new
     @user = User.new
@@ -15,7 +16,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
+    if !logged_in?
+      redirect_to root_path
+    end
+  end
+
+  def edit
+    @user = current_user
+    if !logged_in
+      redirect_to root_path
+    end
   end
 
   private

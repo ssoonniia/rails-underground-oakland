@@ -8,8 +8,14 @@ module ApplicationHelper
     !!session[:user_id]
   end
 
-  def authenticated?
-    if current_user && current_user.authenticate(params[:user][:password])
+  def authenticated?(user)
+    user.authenticate(params[:user][:password])
+  end
+
+  def owner?
+    @event = event.find_by_id(params[:id])
+    if @event.user_id = current_user.id
+      true
     end
   end
 end

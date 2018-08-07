@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include ApplicationHelper
 
   def new
     @user = User.new
@@ -6,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password])
+    if @user && authenticated?(@user)
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_path 
+    redirect_to root_path
   end
 
 end
