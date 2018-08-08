@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :events
   has_many :rsvps
-  has_many :attending_events, through: :rsvps, class_name: 'Event'
+  has_many :attending_events, :through => :rsvps, :source => :event
+
 
   validates :username, presence: true
   validates :email, presence: true

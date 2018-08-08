@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
+  before_action :logged_in?, only: [:show, :edit]
 
   def new
     @user = User.new
@@ -17,17 +17,18 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @rsvps = @user.rsvps
     @user_events = user_events
-    if !logged_in?
-      redirect_to root_path
-    end
+    # if !logged_in?
+    #   redirect_to root_path
+    # end
   end
 
   def edit
     @user = current_user
-    if !logged_in
-      redirect_to root_path
-    end
+    # if !logged_in
+    #   redirect_to root_path
+    # end
   end
 
   private

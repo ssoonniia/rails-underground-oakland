@@ -1,5 +1,5 @@
 class RsvpsController < ApplicationController
-  include ApplicationHelper
+
 
   def new
     @event = Event.find_by_id(params[:event_id])
@@ -12,5 +12,9 @@ class RsvpsController < ApplicationController
   end
 
   def destroy
+    @rsvp = Rsvp.find_by_id(params[:id])
+    @rsvp.delete
+
+    redirect_to events_path
   end
 end

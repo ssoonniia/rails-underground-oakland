@@ -1,5 +1,7 @@
+<h1> Check Out Events Happening in Oakland </h1>
+<br></br>
 <% @events.each do |event| %>
-  <h1><%= event.name %> </h1>
+  <h2><%= event.name %> </h2>
   <h3><%= event.date %> </h3>
   <h3><%= event.time %></h3>
   <h3><%= event.cost %></h3>
@@ -8,7 +10,8 @@
   <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
   <%if event.user_id == session[:user_id] %>
     <%=link_to 'Edit Event', edit_event_path(event) %> <br></br>
-    <!--refractor to go to show page and confirm deletion  -->
     <a href="<%=event.id%>/delete">Delete</a>
     <%end%>
 <%end%>
+
+<!-- add link to profile page  -->

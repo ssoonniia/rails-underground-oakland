@@ -1,11 +1,20 @@
 <h1>Show page!</h1>
 <h1> Welcome <%=@user.username %>
 
+<!--refractor - create an event now or Events you created  -->
 <h2>Events You Created</h2>
  <%@user_events.each do |event| %>
   <p><%=link_to "#{event.name}", event_path(event) %></p>
 <%end%>
 
+<!-- refractor attending events  -->
+<h2>Events You Are Attending </h2>
+
+<% @user.attending_events.each do |event| %>
+  <p><%= event.name %></p>
+    <p>No longer attending? <%= button_to 'Cancel RSVP', rsvp_path, method: :delete %>
+
+  <%end %>
 
 <h3>Check out all events happening in <%=link_to 'Oakland', events_path %> </h3>
 

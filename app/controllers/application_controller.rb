@@ -4,4 +4,45 @@ class ApplicationController < ActionController::Base
   end
 
 
+private
+
+  def current_user
+    User.find_by_id(session[:user_id])
+  end
+
+  def logged_in?
+    if !session[:user_id]
+      redirect_to root_path
+    end
+  end
+
+  def authenticated?(user)
+    user.authenticate(params[:user][:password])
+  end
+
+  def owner?
+    @event = Event.find_by_id(params[:id])
+    if @event.user_id = current_user.id
+      true
+    end
+  end
+
+  def user_events
+    @user = current_user
+    user_created_events = []
+    Event.all.each do |event|
+      if event.user_id == @user.id
+        user_created_events << event
+      end
+    end
+    user_created_events
+  end
+
+  def authorized_to_edit?
+     logged_in?
+    if !owner?
+      redirect_to events_path
+    end
+  end
+
 end

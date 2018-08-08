@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       resources :rsvps, only: [:new, :destroy]
     end
   end
+
+  resources :rsvps, only: [:destroy]
 end

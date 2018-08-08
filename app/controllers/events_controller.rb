@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
-  include ApplicationHelper
+  before_action :authorized_to_edit?, only: [:show, :edit, :update, :destory]
+  before_action :logged_in?, only: [:new, :index, :create]
 
   def index
     @events = Event.all
+    # if !logged_in?
+    #   redirect_to root_path
+    # end
   end
 
   def new
@@ -10,10 +14,9 @@ class EventsController < ApplicationController
   end
 
   def create
-
-    if !logged_in?
-      redirect_to root_path
-    end
+    # if !logged_in?
+    #   redirect_to root_path
+    # end
 
     @event = Event.create(event_params)
     @event.user_id = current_user.id
@@ -26,32 +29,32 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
-    #refractor
-    if !logged_in?
-      redirect_to root_path
-    elsif !owner?
-      redirect_to events_path
-    end
+    # #refractor
+    # if !logged_in?
+    #   redirect_to root_path
+    # elsif !owner?
+    #   redirect_to events_path
+    # end
   end
 
   def edit
     @event = Event.find_by_id(params[:id])
     #refractor
-    if !logged_in?
-      redirect_to root_path
-    elsif !owner?
-      redirect_to events_path
-    end
+    # if !logged_in?
+    #   redirect_to root_path
+    # elsif !owner?
+    #   redirect_to events_path
+    # end
   end
 
   def update
     @event = Event.find_by_id(params[:id])
     #refractor
-    if !logged_in?
-      redirect_to root_path
-    elsif !owner?
-      redirect_to events_path
-    end
+    # if !logged_in?
+    #   redirect_to root_path
+    # elsif !owner?
+    #   redirect_to events_path
+    # end
     #
     @event.update(event_params)
     redirect_to event_path(@event)
