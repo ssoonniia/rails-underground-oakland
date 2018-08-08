@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in?, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -16,28 +17,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
     @rsvps = @user.rsvps
     @user_events = user_events
-    # if !logged_in?
-    #   redirect_to root_path
-    # end
   end
 
   def edit
-    @user = current_user
-    # if !logged_in
-    #   redirect_to root_path
-    # end
+  end
+
+  def update
+    @user.update(user_params)
+    redirect_to user_path
   end
 
   private
 
-
   def user_params
     params.require(:user).permit(:username, :password, :email)
   end
-
-
 
 end

@@ -12,7 +12,8 @@
 
 <% @user.attending_events.each do |event| %>
   <p><%= event.name %></p>
-    <p>No longer attending? <%= button_to 'Cancel RSVP', rsvp_path, method: :delete %>
+
+    <p>No longer attending? <%= button_to 'Cancel RSVP', rsvps_path(), method: :delete %>
 
   <%end %>
 

@@ -1,6 +1,5 @@
 class RsvpsController < ApplicationController
 
-
   def new
     @event = Event.find_by_id(params[:event_id])
     @user = current_user
@@ -8,13 +7,11 @@ class RsvpsController < ApplicationController
   end
 
   def create
-
   end
 
   def destroy
     @rsvp = Rsvp.find_by_id(params[:id])
     @rsvp.delete
-
     redirect_to events_path
   end
 end
