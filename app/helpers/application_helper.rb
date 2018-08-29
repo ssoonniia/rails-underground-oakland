@@ -8,4 +8,5 @@ module ApplicationHelper
     event.time.strftime("%I:%M %p")
   end
 
+
 end

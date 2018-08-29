@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get ':id/delete'=> 'events#destroy'
 
+  get 'auth/:provider/callback' => 'sessions#create_with_google'
+
 
   resources :users
   resources :events
