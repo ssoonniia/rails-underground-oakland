@@ -1,19 +1,36 @@
-<h1>Show page!</h1>
-<h1> Welcome <%=@user.username %>
+<h1><%=@user.username.titleize%>'s Underground Oakland Profile </h1>
 
 <!--refractor - create an event now or Events you created  -->
-<h2>Events You Created</h2>
+
+<% if @user_events.size == 0 %>
+  <h2>You haven't posted any events yet.
+  Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
+  <% elsif @user_events.size == 1 %>
+  <h2>Your Event Posting</h2>
+  <%else %>
+<h2>Your Events Postings</h2>
+<%end%>
  <%@user_events.each do |event| %>
   <p><%=link_to "#{event.name}", event_path(event) %></p>
 <%end%>
 
-<!-- refractor attending events  -->
-<h2>Events You Are Attending </h2>
+<!-- refractor attending events  and pluralize-->
+
+<% if @user.attending_events.size == 0 %>
+   <h2>You have not RSVP for any events</h2>
+  <% elsif @user.attending_events.size == 1 %>
+  <h2> Event You Are attending </h2>
+  <% else %>
+  <h2>Events You Are Attending </h2>
+<% end %>
 
 <% @user.attending_events.each do |event| %>
   <p><%= event.name %></p>
-
-    <p>No longer attending? <%= button_to 'Cancel RSVP', rsvps_path(), method: :delete %>
+  <% event.rsvps.each do |rsvp| %>
+     <% if rsvp.user_id == @user.id %>
+      <p>No longer attending? <%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %>
+        <%end%>
+    <%end%>
 
   <%end %>
 

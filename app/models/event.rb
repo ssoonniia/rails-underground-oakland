@@ -12,4 +12,7 @@ class Event < ApplicationRecord
   scope :past_events,  -> {where('date < ?',  Date.today)}
   scope :future_events,  -> {where('date >= ?', Date.today)}
 
+
+
+
 end

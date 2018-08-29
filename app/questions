@@ -3,3 +3,34 @@ confirm routes nesting users - events - rsvps
 does rsvp have to be create in create? currently created under new because they are RSVPing as soon as they click rsvp
 
 delete route - how to create a get route without writing it out?
+
+
+<!-- Todays Events   -->
+<%if @events.todays_events.size > 0 %>
+  <% @events.todays_events.each do |event| %>
+    <h1>Today's Events</h1>
+    <h2><%= event.name %> </h2>
+    <h3>Date: <%= event.date %> </h3>
+    <h3>Description: <%= event.time %></h3>
+    <h3>Cost: <%= event.cost %></h3>
+    <h3>Location: <%= event.location %></h3>
+    <h3>Description: <%= event.description %></h3>
+    <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+  <% end %>
+<% end %>
+
+
+
+<!-- Future Events -->
+<%if @events.future_events.size > 0 %>
+  <% @events.future_events.each do |event| %>
+    <h1>Events Coming Up!</h1>
+    <h2><%= event.name %> </h2>
+    <h3>Date: <%= event.date %> </h3>
+    <h3>Description: <%= event.time %></h3>
+    <h3>Cost: <%= event.cost %></h3>
+    <h3>Location: <%= event.location %></h3>
+    <h3>Description: <%= event.description %></h3>
+    <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+  <% end %>
+<% end %>

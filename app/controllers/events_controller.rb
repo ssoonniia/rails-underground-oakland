@@ -2,14 +2,28 @@ class EventsController < ApplicationController
   before_action :authorized_to_edit?, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: [:new, :index, :create]
   before_action :set_event, only: [:show, :edit, :udpate, :destroy]
+  before_action :set_user, only: [:index, :show]
 
   def index
-    @events = Event.all
+    if !params[:date].blank?
+      if params[:date]== 'Today Events'
+        @events = Event.all.todays_events
+      elsif params[:date] == 'Old Events'
+        @events = Event.all.past_events
+      else
+        @events = Event.all.future_events
+      end
+    else
+      @events = Event.all
+    end
   end
+
 
   def new
     @event = Event.new
   end
+
+
 
   def create
     @event = Event.create(event_params)
@@ -42,8 +56,8 @@ private
   def event_params
     params.require(:event).permit(:name, :date, :time, :location, :cost, :description, :user_id)
   end
-end
 
   def set_event
     @event = Event.find_by_id(params[:id])
   end
+end

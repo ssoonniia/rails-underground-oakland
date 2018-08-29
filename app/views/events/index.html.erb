@@ -1,17 +1,31 @@
 <h1> Check Out Events Happening in Oakland </h1>
 <br></br>
+
+<!--add filter option -->
+<h3>Filter Events:</h3>
+<%= form_tag('/events', method: 'get') do %>
+  <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
+  <%= submit_tag "Filter" %>
+  <%end%>
+
+
+
+
 <% @events.each do |event| %>
   <h2><%= event.name %> </h2>
-  <h3><%= event.date %> </h3>
-  <h3><%= event.time %></h3>
-  <h3><%= event.cost %></h3>
-  <h3><%= event.location %></h3>
-  <h3><%= event.description %></h3>
+  <h3>Date: <%= event.date.strftime('%B %d, %Y') %> </h3>
+  <h3>Time: <%=event.time.strftime("%I:%M %p")%> </h3>
+  <h3>Cost: <%= event.cost %></h3>
+  <h3>Location: <%= event.location %></h3>
+  <h3>Description: <%= event.description %></h3>
   <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
-  <%if event.user_id == session[:user_id] %>
-    <%=link_to 'Edit Event', edit_event_path(event) %> <br></br>
-    <a href="<%=event.id%>/delete">Delete</a>
-    <%end%>
-<%end%>
+  <!-- <%if event.user_id == session[:user_id] %> -->
+  <!--haven't tested this section link works but not delete button  -->
+    <!-- <%=link_to 'Edit Event', edit_event_path(event) %> <br></br>
+   <!-- button_to 'delete', event_path, method: :delete  -->
+    <!-- <a href="event.id/delete">Delete</a> -->
+    <!-- <%end%> -->
+ <%end%>
 
 <!-- add link to profile page  -->
+<%=link_to 'Back to Profile', user_path(@user) %>
