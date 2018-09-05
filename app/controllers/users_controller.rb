@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
+      flash[:message] = "testing flash message"
+
     @rsvps = @user.rsvps
     @user_events = user_events
   end

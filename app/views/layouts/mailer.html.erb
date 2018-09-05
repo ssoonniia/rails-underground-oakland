@@ -9,11 +9,10 @@
 
   <body>
 
-    <% if flash[:message] %>
-    <%= flash[:message] %>
-    <% end %>
-
-      <%= yield %>
+      <% if flash[:message] %>
+        <%= flash[:message] %>
+      <% end %>
     <%= yield %>
+      <h1>TESTING</h1>
   </body>
 </html>

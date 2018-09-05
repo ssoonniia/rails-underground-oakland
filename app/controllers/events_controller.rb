@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   before_action :set_user, only: [:index, :show]
 
   def index
-    flash[:message] = "testing flash message"
     if !params[:date].blank?
       if params[:date]== 'Today Events'
         @events = Event.all.todays_events

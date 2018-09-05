@@ -14,7 +14,6 @@ class RsvpsController < ApplicationController
   end
 
   def destroy
-    binding.pry 
     @rsvp = Rsvp.find_by_id(params[:id])
     @rsvp.destroy
     redirect_to user_path
