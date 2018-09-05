@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   get ':id/delete'=> 'events#destroy'
 
+  get 'auth/:provider' => redirect("/auth/google_oauth2")
   get 'auth/:provider/callback' => 'sessions#create_with_google'
+  get 'auth/failure' => redirect('/')
 
 
   resources :users
