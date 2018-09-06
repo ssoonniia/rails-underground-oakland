@@ -15,7 +15,6 @@ private
     @user =  User.find_by_id(session[:user_id])
   end
 
-
   def logged_in?
     if !session[:user_id]
       flash[:message] = 'Woops! Please login or sign  up first'
@@ -34,8 +33,6 @@ private
     end
   end
 
-
-
   def user_events
     @user = current_user
     user_created_events = []
@@ -51,7 +48,7 @@ private
      if !logged_in? || !owner?
           flash[:message] = 'You are not authorized to edit'
         redirect_to events_path
-        end
+      end
   end
 
 end

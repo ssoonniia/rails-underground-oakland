@@ -2,8 +2,6 @@ class RsvpsController < ApplicationController
   before_action :set_user, only: [:new, :show, :destroy]
   before_action :logged_in?, only: [:new, :create]
 
-
-
   def new
     @events = Event.all
     @event = Event.find_by_id(params[:event_id])
@@ -22,4 +20,5 @@ class RsvpsController < ApplicationController
     @rsvp.destroy
     redirect_to user_path
   end
+
 end

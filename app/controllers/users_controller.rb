@@ -38,6 +38,5 @@ class UsersController < ApplicationController
   def profile_owner
     current_user.id == params[:id]
   end
-
-
+  
 end

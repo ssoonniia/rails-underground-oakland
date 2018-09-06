@@ -23,8 +23,6 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-
-
   def create
     @event = Event.create(event_params)
     @event.user_id = current_user.id
@@ -36,7 +34,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    # binding.pry
   end
 
   def edit

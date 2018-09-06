@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     @user = User.find_by(username: params[:user][:username])
     if !@user || !authenticated?(@user)
       flash[:message] = 'Oh oh - please check your username and password'
@@ -22,11 +21,8 @@ class SessionsController < ApplicationController
      u.name = auth['info']['name']
      u.email = auth['info']['email']
    end
-
    session[:user_id] = @user.id
-
    redirect_to user_path(@user)
-
   end
 
   def destroy
@@ -39,6 +35,5 @@ class SessionsController < ApplicationController
   def auth
    request.env['omniauth.auth']
   end
-
 
 end
