@@ -8,7 +8,8 @@ module ApplicationHelper
     event.time.strftime("%I:%M %p")
   end
 
-  def future_events_only  
+  def future_event?(event)
+    Event.all.future_events.include?(event)
   end
 
 
