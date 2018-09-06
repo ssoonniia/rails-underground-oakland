@@ -2,14 +2,13 @@
 
 <!--refractor - create an event now or Events you created  -->
 
-<% if @user_events.size == 0 %>
-  <h2>You haven't posted any events yet.
-  Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
-  <% elsif @user_events.size == 1 %>
-  <h2>Your Event Posting</h2>
-  <%else %>
-<h2>Your Events Postings</h2>
+<% if has_events %>
+    <h2>You have posted <%=pluralize(@user_events.size, 'Event')%> </h2>
+  <% else %>
+    <h2>You haven't posted any events yet.
+    Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
 <%end%>
+
  <%@user_events.each do |event| %>
   <p><%=link_to "#{event.name}", event_path(event) %></p>
 <%end%>

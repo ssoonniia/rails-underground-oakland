@@ -34,3 +34,20 @@ delete route - how to create a get route without writing it out?
     <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
   <% end %>
 <% end %>
+
+
+
+
+events 
+
+<% if @user_events.size == 0 %>
+  <h2>You haven't posted any events yet.
+  Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
+  <% elsif @user_events.size == 1 %>
+  <h2>Your Event Posting</h2>
+  <%else %>
+<h2>Your Events Postings</h2>
+<%end%>
+ <%@user_events.each do |event| %>
+  <p><%=link_to "#{event.name}", event_path(event) %></p>
+<%end%>
