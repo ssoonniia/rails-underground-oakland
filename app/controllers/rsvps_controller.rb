@@ -8,6 +8,10 @@ class RsvpsController < ApplicationController
     @events = Event.all
     @event = Event.find_by_id(params[:event_id])
     @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id)
+    if !@rsvp.save
+      flash[:message] = "You've already RSVP to this event. You're all set!"
+      redirect_to events_path
+    end
   end
 
   def create
