@@ -1,12 +1,12 @@
 <h1> Check Out Events Happening in Oakland </h1>
 <br></br>
 
-<!--add filter option -->
+<!--filter option -->
 <h3>Filter Events:</h3>
 <%= form_tag('/events', method: 'get') do %>
   <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
   <%= submit_tag "Filter" %>
-  <%end%>
+<%end%>
 
 
 

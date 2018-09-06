@@ -2,14 +2,16 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => "home"
   end
 
   def create
+
     @user = User.find_by(username: params[:user][:username])
     if !@user || !authenticated?(@user)
       flash[:message] = 'Oh oh - please check your username and password'
       redirect_to login_path
-    else 
+    else
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     end
