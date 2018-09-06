@@ -15,22 +15,17 @@
 
 <!-- refractor attending events  and pluralize-->
 
-<% if @user.attending_events.size == 0 %>
-   <h2>You have not RSVP for any events</h2>
-  <% elsif @user.attending_events.size == 1 %>
-  <h2> Event You Are attending </h2>
-  <% else %>
-  <h2>Events You Are Attending </h2>
-<% end %>
+  <% if has_rsvps %>
+    <h2> You are attending <%= pluralize(@user.attending_events.size, 'event') %> in Oakland </h2>
+  <% end %>
 
 <% @user.attending_events.each do |event| %>
   <p><%= event.name %></p>
   <% event.rsvps.each do |rsvp| %>
      <% if rsvp.user_id == @user.id %>
-      <p>No longer attending? <%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %>
+      <p>Can't make it? <%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %></p>
         <%end%>
     <%end%>
-
   <%end %>
 
 

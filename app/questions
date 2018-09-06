@@ -38,7 +38,7 @@ delete route - how to create a get route without writing it out?
 
 
 
-events 
+events
 
 <% if @user_events.size == 0 %>
   <h2>You haven't posted any events yet.
@@ -51,3 +51,13 @@ events
  <%@user_events.each do |event| %>
   <p><%=link_to "#{event.name}", event_path(event) %></p>
 <%end%>
+
+
+
+<% if @user.attending_events.size == 0 %>
+   <h2>You have not RSVP for any events</h2>
+  <% elsif @user.attending_events.size == 1 %>
+  <h2> Event You Are attending </h2>
+  <% else %>
+  <h2>Events You Are Attending </h2>
+<% end %>
