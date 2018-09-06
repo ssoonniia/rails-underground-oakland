@@ -1,18 +1,10 @@
 
-<h1><%= @event.name %></h1>
-<h3>Date: <%= dispaly_date(@event) %></h3>
-<h3>Time: <%= display_time(@event) %></h3>
-<h3>Cost: <%= @event.cost %></h3>
-<h3>Location: <%= @event.location %></h3>
-<h3>Description: <%= @event.description %></h3>
+
+
+<%= render partial: "event_info", locals: {event: @event} %>
 
 
 <br></br>
-<p> <%=link_to 'Check out all events', events_path %></p>
-
-<p><%=link_to 'Profile', user_path(@user) %></p>
-
-
 
 <%=link_to 'Edit Event', edit_event_path %> <br></br>
 

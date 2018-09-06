@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-  before_action :authorized_to_edit?, only: [:show, :edit, :update, :destroy]
+  # before_action :authorized_to_edit?, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: [:new, :index, :create]
   before_action :set_event, only: [:show, :edit, :udpate, :destroy]
-  before_action :set_user, only: [:index, :show]
+  before_action :set_user, only: [:new, :index, :show]
 
   def index
     if !params[:date].blank?
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    # binding.pry 
+    # binding.pry
   end
 
   def edit
