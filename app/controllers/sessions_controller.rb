@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username])
-    if @user && authenticated?(@user)
+    if !@user || !authenticated?(@user)
+      flash[:message] = 'Oh oh - please check your username and password'
+      redirect_to login_path
+    else 
       session[:user_id] = @user.id
       redirect_to user_path(@user)
-    else
-      redirect_to login_path
     end
   end
 

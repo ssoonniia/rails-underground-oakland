@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-      flash[:message] = "testing flash message"
-
     @rsvps = @user.rsvps
     @user_events = user_events
   end
@@ -35,6 +33,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+
+  def profile_owner
+    current_user.id == params[:id]
   end
 
 
