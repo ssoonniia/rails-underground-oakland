@@ -1,6 +1,6 @@
-Sweet! You're going to <%=@rsvp.event.name%>
+Please review and confirm your RSVP.
 
+<%= render partial: "event_info", locals: {event: @event} %>
 
-
-
+<%= button_to 'Confirm RSVP',user_event_rsvps_path(@user, @event) , method: :post %><br></br>
 <br></br>

@@ -17,7 +17,7 @@ private
 
   def logged_in?
     if !session[:user_id]
-      flash[:message] = 'Woops! Please login or sign  up first'
+      flash[:danger] = 'Woops! Please login or sign  up first'
       redirect_to root_path
     end
   end
@@ -46,7 +46,7 @@ private
 
   def authorized_to_edit?
      if !logged_in? || !owner?
-          flash[:message] = 'You are not authorized to edit'
+          flash[:danger] = 'You are not authorized to edit'
         redirect_to events_path
       end
   end

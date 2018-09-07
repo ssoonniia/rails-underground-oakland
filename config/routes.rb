@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :events
   resources :user do
     resources :events do
-      resources :rsvps, only: [:new, :destroy]
+      resources :rsvps, only: [:new, :create, :destroy]
     end
   end
 
