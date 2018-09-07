@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   before_action :logged_in?, only: [:show, :edit]
   before_action :set_user, only: [:show, :edit, :update]
 
+
   def new
     @user = User.new
+    render :layout => "home"
   end
 
   def create
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id]= @user.id
       redirect_to user_path(@user)
     else
-      render :new
+      render :new, :layout => "home"
     end
   end
 
@@ -38,5 +40,5 @@ class UsersController < ApplicationController
   def profile_owner
     current_user.id == params[:id]
   end
-  
+
 end

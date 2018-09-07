@@ -1,2 +1,16 @@
 <h1>Create An Event</h1>
-<%=render 'form' %> 
+
+<% if @event.errors.any? %>
+ <div id="error_explanation">
+   <h2>
+    Woops - please fix the following   <%= pluralize(@event.errors.count, "error") %> before proceeding!
+   </h2>
+
+   <ul>
+   <% @event.errors.full_messages.each do |msg| %>
+     <li><%= msg %></li>
+   <% end %>
+   </ul>
+ </div>
+<% end %>
+<%=render 'form' %>

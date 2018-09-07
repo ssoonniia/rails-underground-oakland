@@ -1,3 +1,16 @@
 <h1>Users new page</h1>
+<% if @user.errors.any? %>
+ <div id="error_explanation">
+   <h2>
+    Woops - please fix the following   <%= pluralize(@user.errors.count, "error") %> before proceeding!
+   </h2>
+
+   <ul>
+   <% @user.errors.full_messages.each do |msg| %>
+     <li><%= msg %></li>
+   <% end %>
+   </ul>
+ </div>
+<% end %>
 <!--form without error messages  -->
-<%=render 'form' %> 
+<%=render 'form' %>

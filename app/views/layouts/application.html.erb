@@ -11,25 +11,25 @@
     <div class="container" style="background-color: #F5F5F5;">
 
   <!-- Navagation bar-->
-        <nav class="navbar navbar-light" style="background-color: #3CB371;">
-          <a class="navbar-brand" href="#">Underground Oakland</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" <%=link_to 'Profile', user_path(@user) %><span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" <%=link_to 'Events', events_path %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" <%=link_to 'Log Out', logout_path %> </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+  <nav class="navbar navbar-light" style="background-color: #3CB371;">
+    <a class="navbar-brand" href="#">Underground Oakland</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" <%=link_to 'Profile', user_path(@user) %><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" <%=link_to 'Events', events_path %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" <%=link_to 'Log Out', logout_path %> </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
 
     <!-- Content here -->
