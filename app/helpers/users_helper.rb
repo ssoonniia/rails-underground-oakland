@@ -8,4 +8,8 @@ module UsersHelper
     @user.attending_events.size > 0
   end
 
+  # def user_rsvp
+  #   event.rsvps.each do |rsvp|
+  # end
+
 end

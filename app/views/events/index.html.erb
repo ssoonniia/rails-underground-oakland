@@ -11,7 +11,7 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %>
-  <% if future_event?(event) %>
+   <% if future_event?(event) %>
   <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
-  <%end%>
+   <%end%>
  <%end%>
