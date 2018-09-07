@@ -5,12 +5,14 @@ class RsvpsController < ApplicationController
   def new
     @events = Event.all
     @event = Event.find_by_id(params[:event_id])
-    @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id)
-    if !@rsvp.save
-      flash[:message] = "You've already RSVP to this event. You're all set!"
-      redirect_to events_path
-    end
+   if current_rsvp.include?(@user.id)
+     flash[:message] = "You've already RSVP to this event. You're all set!"
+     redirect_to events_path
+   else
+     @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id)
+     @rsvp.save
   end
+end
 
   def create
   end
@@ -19,6 +21,15 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.find_by_id(params[:id])
     @rsvp.destroy
     redirect_to user_path
+  end
+
+
+  private
+
+  def current_rsvp
+    @event.rsvps.collect do |rsvp|
+      rsvp.user_id
+    end
   end
 
 end
