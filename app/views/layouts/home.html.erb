@@ -9,40 +9,39 @@
   <!-- Content here -->
   <body>
 
-        <% if flash[:warning] %>
-    <div class="alert alert-warning">
-          <%= flash[:warning] %>
-        <% end %>
-    </div>
+    <% if flash[:warning] %>
+      <div class="alert alert-warning">
+        <%= flash[:warning] %>
+      </div>
+    <% end %>
 
 
     <% if flash[:success] %>
-  <div class="alert alert-success">
-      <%= flash[:sucess] %>
+      <div class="alert alert-success">
+        <%= flash[:sucess] %>
+      </div>
     <% end %>
-  </div>
 
 
     <% if flash[:info] %>
-  <div class="alert alert-info">
-      <%= flash[:info] %>
+      <div class="alert alert-info">
+          <%= flash[:info] %>
+      </div>
     <% end %>
-  </div>
-
 
 
     <% if flash[:info] %>
-    <div class="alert alert-info">
-      <%= flash[:info] %>
+      <div class="alert alert-info">
+        <%= flash[:info] %>
+      </div>
     <% end %>
-  </div>
 
 
     <% if flash[:danger] %>
-    <div class="alert alert-danger">
-      <%= flash[:danger] %>
-    <% end %>
-  </div>
+      <div class="alert alert-danger">
+        <%= flash[:danger] %>
+      </div>
+    <%end%>
 
  <%=yield %>
 <!-- bootstrap plugins -->

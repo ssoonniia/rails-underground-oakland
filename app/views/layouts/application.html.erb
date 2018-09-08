@@ -33,14 +33,38 @@
 
 
     <!-- Content here -->
+    <% if flash[:warning] %>
+      <div class="alert alert-warning">
+        <%= flash[:warning] %>
+      </div>
+    <% end %>
 
-        <% if flash[:warning] %>
-        <div class="alert alert-warning">
-          <%= flash[:warning] %>
-        <% end %>
-        <%= yield %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+
+
+    <% if flash[:info] %>
+      <div class="alert alert-info">
+          <%= flash[:info] %>
+      </div>
+    <% end %>
+
+    <% if flash[:danger] %>
+      <div class="alert alert-danger">
+        <%= flash[:danger] %>
+      </div>
+    <%end%>
+
+    <%= yield %>
+
+
+  <!-- closing container tag -->
     </div>
-</div>
+
 
 <!-- bootstrap plugins -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

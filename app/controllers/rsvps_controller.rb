@@ -23,6 +23,7 @@ class RsvpsController < ApplicationController
   def destroy
     @rsvp = Rsvp.find_by_id(params[:id])
     @rsvp.destroy
+    flash[:info] = "Thank you for your update"
     redirect_to user_path
   end
 
