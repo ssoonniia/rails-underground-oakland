@@ -2,5 +2,11 @@ Please review and confirm your RSVP.
 
 <%= render partial: "event_info", locals: {event: @event} %>
 
-<%= button_to 'Confirm RSVP',user_event_rsvps_path(@user, @event) , method: :post %><br></br>
+<!-- Have to add an attribute  going to add guest-->
+<%= form_for [@user, @event, @rsvp] do |f| %>
+    <h3>Number of Guests Attending: <%= f.number_field :guests, min: 1 %></h3>
+    <%= f.submit %>
+<% end %>
+
+
 <br></br>

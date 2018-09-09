@@ -3,6 +3,7 @@ class RsvpsController < ApplicationController
   before_action :logged_in?, only: [:new, :create]
 
   def new
+    @rsvp= Rsvp.new
     @event = Event.find_by_id(params[:event_id])
   end
 
@@ -13,7 +14,7 @@ class RsvpsController < ApplicationController
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
      else
-       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id)
+       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:guests])
        @rsvp.save
        flash[:success] = "Sweet! Thanks for your RSVP!"
        redirect_to events_path

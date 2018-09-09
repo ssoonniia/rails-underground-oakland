@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 gem 'pry'
-gem 'rack-flash3'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 # Use ActiveStorage variant
