@@ -14,9 +14,11 @@ class RsvpsController < ApplicationController
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
      else
-       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:guests])
+       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guest: params[:rsvp][:guest])
        @rsvp.save
+       binding.pry
        flash[:success] = "Sweet! Thanks for your RSVP!"
+
        redirect_to events_path
      end
   end

@@ -1,7 +1,10 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :rsvps
-  has_many :attending_users, :through => :rsvps, :source => :user
+  has_many :attending_users, through: :rsvps, :source => :user
+
+
+
 
   validates :name, presence: true
   validates :date, presence: true
