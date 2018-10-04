@@ -14,9 +14,8 @@ class RsvpsController < ApplicationController
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
      else
-       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guest: params[:rsvp][:guest])
+       @rsvp = Rsvp.create(rsvp_params)
        @rsvp.save
-       binding.pry
        flash[:success] = "Sweet! Thanks for your RSVP!"
 
        redirect_to events_path
@@ -32,6 +31,10 @@ class RsvpsController < ApplicationController
 
 
   private
+
+  def rsvp_params
+    params.require(:rsvp).permit(:user_id, :event_id, :guests)
+  end
 
   def current_rsvp
     @event.rsvps.collect do |rsvp|

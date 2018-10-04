@@ -4,7 +4,7 @@ Please review and confirm your RSVP.
 
 <!-- Have to add an attribute  going to add guest-->
 <%= form_for [@user, @event, @rsvp] do |f| %>
-    <h3>Number of Guests Attending: <%= f.number_field :guest, min: 1 %></h3>
+    <h3>Number of Guests Attending: <%= f.number_field :guests, min: 1 %></h3>
     <%= f.submit %>
 <% end %>
 
