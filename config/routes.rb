@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'auth/failure' => redirect('/')
 
 
-    resources :users,  except: [:destory]
+    resources :users , except: [:destory]
     resources :events
 
   resources :events do
