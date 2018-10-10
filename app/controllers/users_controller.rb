@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in?, only: [:show, :edit]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :profile_owner?, only: [:show, :edit, :update]
 
 
   def new
@@ -37,8 +38,24 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :email)
   end
 
-  def profile_owner
-    current_user.id == params[:id]
+  def profile_owner?
+    if current_user.id == params[:id].to_i
+      true
+    else
+      flash[:danger] = 'Woops - that isn\'t your profile'
+      redirect_to events_path
+    end
+  end
+
+  def user_events
+    @user = current_user
+    user_created_events = []
+    Event.all.each do |event|
+      if event.user_id == @user.id
+        user_created_events << event
+      end
+    end
+    user_created_events
   end
 
 end

@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
-
   end
 
 

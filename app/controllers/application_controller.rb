@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
     render :layout => "home"
   end
 
-
 private
 
   def current_user
@@ -29,22 +28,10 @@ private
   end
 
   def owner?
-    # @current_user = current_user
     @event = Event.find_by_id(params[:id])
     if @event.user_id == current_user.id
       true
     end
-  end
-
-  def user_events
-    @user = current_user
-    user_created_events = []
-    Event.all.each do |event|
-      if event.user_id == @user.id
-        user_created_events << event
-      end
-    end
-    user_created_events
   end
 
 end
