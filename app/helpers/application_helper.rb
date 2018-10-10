@@ -12,5 +12,4 @@ module ApplicationHelper
     Event.all.future_events.include?(event)
   end
 
-
 end
