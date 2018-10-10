@@ -15,7 +15,6 @@ class RsvpsController < ApplicationController
        redirect_to events_path
      else
        @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
-       @rsvp = Rsvp.create(rsvp_params)
        @rsvp.save
        flash[:success] = "Sweet! Thanks for your RSVP!"
 
@@ -25,7 +24,7 @@ class RsvpsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:event_id])
-    @rsvps = @event.rsvps 
+    @rsvps = @event.rsvps
   end
 
   def destroy

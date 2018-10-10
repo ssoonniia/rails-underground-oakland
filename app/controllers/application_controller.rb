@@ -19,6 +19,8 @@ private
     if !session[:user_id]
       flash[:danger] = 'Woops! Please login or sign  up first'
       redirect_to root_path
+    else
+      true
     end
   end
 
@@ -27,8 +29,9 @@ private
   end
 
   def owner?
+    # @current_user = current_user
     @event = Event.find_by_id(params[:id])
-    if @event.user_id = current_user.id
+    if @event.user_id == current_user.id
       true
     end
   end
@@ -42,13 +45,6 @@ private
       end
     end
     user_created_events
-  end
-
-  def authorized_to_edit?
-     if !logged_in? || !owner?
-          flash[:danger] = 'You are not authorized to edit'
-        redirect_to events_path
-      end
   end
 
 end
