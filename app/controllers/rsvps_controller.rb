@@ -15,11 +15,17 @@ class RsvpsController < ApplicationController
        redirect_to events_path
      else
        @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
+       @rsvp = Rsvp.create(rsvp_params)
        @rsvp.save
        flash[:success] = "Sweet! Thanks for your RSVP!"
 
        redirect_to events_path
      end
+  end
+
+  def show
+    @event = Event.find_by_id(params[:event_id])
+    @rsvps = @event.rsvps 
   end
 
   def destroy
@@ -32,8 +38,10 @@ class RsvpsController < ApplicationController
 
   private
 
+
+# how to get this to work  - can't get @user and @event_id to work correctly tried user_id: @user.id
   def rsvp_params
-    params.require(:rsvp).permit(:user_id, :event_id, :guests)
+    params.require(:rsvp).permit(:user_id, :event_id , :guests)
   end
 
   def current_rsvp

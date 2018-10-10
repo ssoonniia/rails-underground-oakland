@@ -14,4 +14,7 @@
    <% if future_event?(event) %>
   <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
    <%end%>
+   <%if event.rsvps.size > 0 %>
+    <%= link_to 'Guest List', event_user_rsvp_path(event, session[:user_id], event.rsvps.size) %>
+    <%end%>
  <%end%>

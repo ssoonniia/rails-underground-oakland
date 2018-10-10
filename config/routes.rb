@@ -13,13 +13,22 @@ Rails.application.routes.draw do
   get 'auth/failure' => redirect('/')
 
 
-  resources :users
-  resources :events
-  resources :user do
-    resources :events do
-      resources :rsvps, only: [:new, :create, :destroy]
+    resources :users,  except: [:destory]
+    resources :events
+
+  resources :events do
+    resources :users do
+      resources :rsvps, only: [:show]
     end
   end
+
+
+  resources :user do
+    resources :events do
+      resources :rsvps, only: [:new, :create]
+    end
+  end
+
 
   resources :rsvps, only: [:destroy]
 end

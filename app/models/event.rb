@@ -5,11 +5,18 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :date, presence: true
+  # validate :in_future, on: :create
   validates :location, presence: true
   validates :cost, presence: true
   validates :description, presence: true
   scope :todays_events,  -> {where('date == ?', Date.today) }
   scope :past_events,  -> {where('date < ?',  Date.today)}
   scope :future_events,  -> {where('date >= ?', Date.today)}
+
+  # def in_future
+  #   if date >= Time.zone.today
+  #     true
+  #   end
+  # end
 
 end
