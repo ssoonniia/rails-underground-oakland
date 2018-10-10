@@ -36,8 +36,6 @@ class RsvpsController < ApplicationController
 
 
   private
-
-
 # how to get this to work  - can't get @user and @event_id to work correctly tried user_id: @user.id
   def rsvp_params
     params.require(:rsvp).permit(:user_id, :event_id , :guests)
