@@ -5,7 +5,6 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :date, presence: true
-  # validate :in_future, on: :create
   validates :location, presence: true
   validates :cost, presence: true
   validates :description, presence: true

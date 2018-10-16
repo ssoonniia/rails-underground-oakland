@@ -1,6 +1,6 @@
 class RsvpsController < ApplicationController
   before_action :set_user, only: [:new, :create, :show, :destroy]
-  before_action :logged_in?, only: [:new, :create]
+  before_action :logged_in?, only: [:new, :create, :show, :destroy]
 
   def new
     @rsvp= Rsvp.new
