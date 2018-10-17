@@ -12,4 +12,10 @@ class Event < ApplicationRecord
   scope :past_events,  -> {where('date < ?',  Date.today)}
   scope :future_events,  -> {where('date >= ?', Date.today)}
 
+  def current_rsvp
+    self.rsvps.collect do |rsvp|
+      rsvp.user_id
+    end
+  end
+
 end

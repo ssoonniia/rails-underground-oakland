@@ -9,7 +9,7 @@ class RsvpsController < ApplicationController
 
   def create
     @events = Event.all
-     if current_rsvp.include?(@user.id)
+     if @event.current_rsvp.include?(@user.id)
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
      end
@@ -31,14 +31,6 @@ class RsvpsController < ApplicationController
     @rsvp.destroy
     flash[:info] = "Thank you for your update"
     redirect_to events_path
-  end
-
- private
-
-  def current_rsvp
-    @event.rsvps.collect do |rsvp|
-      rsvp.user_id
-    end
   end
 
 end

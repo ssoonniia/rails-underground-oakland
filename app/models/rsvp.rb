@@ -4,4 +4,5 @@ class Rsvp < ApplicationRecord
   validates :guests, presence: true
 
 
+
 end

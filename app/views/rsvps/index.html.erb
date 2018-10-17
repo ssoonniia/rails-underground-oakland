@@ -1,8 +1,8 @@
 <h1><%= @event.name %>'s guest list </h1>
 
 <% @rsvps.each do |rsvp| %>
-<ul>
-  <li><h2><%= rsvp.user.username.titleize %> </h2>
-    with <%= rsvp.guests %> guests
+  <ul>
+   <li><h2><%= rsvp.user.username.titleize %> </h2>
+      with <%= rsvp.guests %> guests
   </ul>
 <%end%>

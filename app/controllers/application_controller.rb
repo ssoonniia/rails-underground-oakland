@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if !set_user
       render :layout => "home"
     else
-    redirect_to events_path
+      redirect_to events_path
     end
   end
 
@@ -23,9 +23,8 @@ private
     if !session[:user_id]
       flash[:danger] = 'Woops! Please login or sign  up first'
       redirect_to root_path
-    else
-      true
     end
+      true
   end
 
   def authenticated?(user)
@@ -33,10 +32,7 @@ private
   end
 
   def owner?
-    if set_event && set_event.user_id == set_user.id
-      true
-    end
-
+    set_event && set_event.user_id == set_user.id
   end
 
   def set_event
