@@ -23,7 +23,7 @@ class RsvpsController < ApplicationController
   end
 
   def index
-    @rsvps = Rsvp.all
+    @rsvps = @event.rsvps 
   end
 
   def destroy

@@ -18,7 +18,6 @@
 
 <% future_rsvps(@user).each do |event| %>
   <p><%= event.name %></p>
-
   <% event.rsvps.each do |rsvp| %>
     <% if rsvp.user_id == @user.id %>
       <p>Can't make it? <%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %></p>
