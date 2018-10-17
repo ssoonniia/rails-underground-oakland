@@ -11,12 +11,8 @@ class ApplicationController < ActionController::Base
 
 private
 
-  def current_user
-    @user = User.find_by_id(session[:user_id])
-  end
-
   def set_user
-    @user =  User.find_by_id(session[:user_id])
+    @user = User.find_by_id(session[:user_id])
   end
 
   def logged_in?
@@ -33,9 +29,9 @@ private
   end
 
   def owner?
-    @event = Event.find_by_id(params[:id])
-    if @event.user_id == current_user.id
-      true
+    if !set_event || set_event.user_id != set_user.id
+      flash[:danger] = 'Woops! Nothing to see there!'
+      redirect_to events_path
     end
   end
 
