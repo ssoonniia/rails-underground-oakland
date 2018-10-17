@@ -17,6 +17,6 @@
   <%end%>
 
   <% if event.rsvps.size > 0 %>
-    <%= link_to 'Guest List', event_user_rsvp_path(event, session[:user_id], event.rsvps.size) %>
+    <%= link_to 'Guest List', event_rsvps_path(event) %>
   <% end %>
 <% end %>

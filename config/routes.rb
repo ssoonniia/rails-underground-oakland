@@ -17,9 +17,7 @@ Rails.application.routes.draw do
     resources :events
 
   resources :events do
-    resources :users do
-      resources :rsvps, only: [:show]
-    end
+      resources :rsvps, only: [:index]
   end
 
 

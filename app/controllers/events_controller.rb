@@ -33,6 +33,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @rsvps = @event.rsvps 
   end
 
   def edit
@@ -56,11 +57,12 @@ private
   end
 
   def authorized_to_edit?
-     if !logged_in? || !owner?
-          flash[:danger] = 'You are not authorized to edit'
-        redirect_to events_path
-      else
-        true
-      end
+    if !logged_in? || !owner?
+      flash[:danger] = 'You are not authorized to edit'
+      redirect_to events_path
+    else
+      true
+    end
   end
+
 end

@@ -1,7 +1,7 @@
 class RsvpsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :show, :destroy]
-  before_action :logged_in?, only: [:new, :create, :show, :destroy]
-  before_action :set_event, only: [:new, :create, :show]
+  before_action :set_user, only: [:new, :create, :index, :destroy]
+  before_action :logged_in?, only: [:new, :create, :index, :destroy]
+  before_action :set_event, only: [:new, :create, :index]
 
   def new
     @rsvp= Rsvp.new
@@ -12,17 +12,18 @@ class RsvpsController < ApplicationController
      if current_rsvp.include?(@user.id)
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
-     else
-       @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
-       @rsvp.save
-       flash[:success] = "Sweet! Thanks for your RSVP!"
-
-       redirect_to events_path
      end
+    @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
+      if @rsvp.save
+         flash[:info] = "Thanks for your RSVP"
+         redirect_to events_path
+      else
+        render :new
+    end
   end
 
-  def show
-    @rsvps = @event.rsvps
+  def index
+    @rsvps = Rsvp.all
   end
 
   def destroy
@@ -32,8 +33,7 @@ class RsvpsController < ApplicationController
     redirect_to events_path
   end
 
-
-  private
+ private
 
   def current_rsvp
     @event.rsvps.collect do |rsvp|
