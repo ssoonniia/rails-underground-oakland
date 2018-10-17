@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
-    render :layout => "home"
+      @user = User.new
+      render :layout => "home"
   end
 
   def create
@@ -17,12 +17,14 @@ class SessionsController < ApplicationController
   end
 
   def create_with_google
-    @user = User.find_or_create_by(auth['uid']) do |u|
-     u.name = auth['info']['name']
-     u.email = auth['info']['email']
-   end
-   session[:user_id] = @user.id
-   redirect_to user_path(@user)
+    @user = User.find_or_create_by(
+      email: auth['info']['email'],
+      username: auth['info']['name'],
+      password_digest: auth['uid']
+    )
+
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
   end
 
   def destroy
