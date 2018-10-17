@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   def home
     if !set_user
       render :layout => "home"
-    end
+    else
     redirect_to events_path
+    end  
   end
 
 private
