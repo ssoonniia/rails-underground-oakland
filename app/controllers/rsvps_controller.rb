@@ -1,15 +1,14 @@
 class RsvpsController < ApplicationController
   before_action :set_user, only: [:new, :create, :show, :destroy]
   before_action :logged_in?, only: [:new, :create, :show, :destroy]
+  before_action :set_event, only: [:new, :create, :show]
 
   def new
     @rsvp= Rsvp.new
-    @event = Event.find_by_id(params[:event_id])
   end
 
   def create
     @events = Event.all
-    @event = Event.find_by_id(params[:event_id])
      if current_rsvp.include?(@user.id)
        flash[:info] = "You've already RSVP to this event. You're all set!"
        redirect_to events_path
@@ -23,7 +22,6 @@ class RsvpsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:event_id])
     @rsvps = @event.rsvps
   end
 
@@ -36,10 +34,6 @@ class RsvpsController < ApplicationController
 
 
   private
-# how to get this to work  - can't get @user and @event_id to work correctly tried user_id: @user.id
-  def rsvp_params
-    params.require(:rsvp).permit(:user_id, :event_id , :guests)
-  end
 
   def current_rsvp
     @event.rsvps.collect do |rsvp|

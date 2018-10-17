@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       render :layout => "home"
     else
     redirect_to events_path
-    end  
+    end
   end
 
 private
@@ -37,6 +37,10 @@ private
     if @event.user_id == current_user.id
       true
     end
+  end
+
+  def set_event
+    @event = Event.find_by_id(params[:event_id]) || Event.find_by_id(params[:id])
   end
 
 end

@@ -55,10 +55,6 @@ private
     params.require(:event).permit(:name, :date, :time, :location, :cost, :description, :user_id)
   end
 
-  def set_event
-    @event = Event.find_by_id(params[:id])
-  end
-
   def authorized_to_edit?
      if !logged_in? || !owner?
           flash[:danger] = 'You are not authorized to edit'
