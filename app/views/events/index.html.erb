@@ -7,17 +7,17 @@
 <%= form_tag('/events', method: 'get') do %>
   <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
   <%= submit_tag "Filter" %>
-<%end%>
+<% end %>
 
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %>
 
   <% if future_event?(event) %>
-    <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
-  <%end%>
+    <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+  <% end %>
 
   <% if event.rsvps.size > 0 %>
     <%= link_to 'Guest List', event_rsvps_path(event) %>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>

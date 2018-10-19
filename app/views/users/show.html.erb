@@ -2,28 +2,28 @@
 
 <% if has_events %>
     <h2>You have posted <%=pluralize(@user_events.size, 'Event')%> </h2>
-  <%else%>
+  <% else %>
     <h2>You haven't posted any events yet.
     Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
-<%end%>
+<% end %>
 
-<%@user_events.each do |event| %>
-  <p><%=link_to "#{event.name}", event_path(event) %></p>
-<%end%>
+<% @user_events.each do |event| %>
+  <p><%= link_to "#{event.name}", event_path(event) %></p>
+<% end %>
 
 <!-- refractor attending events  and pluralize-->
 <% if future_rsvps(@user).size > 0 %>
   <h2> You are attending <%= pluralize(@user.attending_events.size, 'event') %> in Oakland </h2>
-<%end%>
+<% end %>
 
 <% future_rsvps(@user).each do |event| %>
   <p><%= event.name %></p>
   <% event.rsvps.each do |rsvp| %>
     <% if rsvp.user_id == @user.id %>
       <p>Can't make it? <%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %></p>
-    <%end%>
-  <%end%>
-<%end%>
+    <% end %>
+  <% end %>
+<% end %>
 
 <h3><%=link_to 'Create A New Event', new_event_path %></h3>
 <h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>
