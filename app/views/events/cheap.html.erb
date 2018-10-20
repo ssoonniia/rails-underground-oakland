@@ -1,5 +1,5 @@
+<h1>Here is the cheapest events! </h1><br>
 
-<h2>cheap</h2>
-<% @cheap.each do |e| %>
-  <%= render partial: "event_info", locals: {event: e} %>
+<% @cheap.each do |event| %>
+  <%= render partial: "event_info", locals: {event: event} %>
 <% end %>
