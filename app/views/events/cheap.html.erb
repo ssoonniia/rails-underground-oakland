@@ -1,0 +1,5 @@
+
+<h2>cheap</h2>
+<% @cheap.each do |e| %>
+  <%= render partial: "event_info", locals: {event: e} %>
+<% end %>

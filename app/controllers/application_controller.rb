@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 private
 
   def current_user
-    User.find_by_id(session[:user_id])
+    @current_user ||= User.find_by_id(session[:user_id])
   end
 
   def set_user
@@ -20,7 +20,7 @@ private
   end
 
   def logged_in?
-    if !session[:user_id]
+    if !current_user #!session[:user_id]
       flash[:danger] = 'Woops! Please login or sign  up first'
       redirect_to root_path
     end

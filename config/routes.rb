@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get ':id/delete'=> 'events#destroy'
+  get '/events/cheap' => 'events#cheap'
   get 'auth/:provider' => redirect("/auth/google_oauth2")
   get 'auth/:provider/callback' => 'sessions#create_with_google'
   get 'auth/failure' => redirect('/')
   resources :users , except: [:destory]
   resources :events
+
 
   resources :events do
    resources :rsvps, only: [:index]

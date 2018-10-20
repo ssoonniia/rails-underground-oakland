@@ -11,6 +11,7 @@ class Event < ApplicationRecord
   scope :todays_events,  -> {where('date == ?', Date.today) }
   scope :past_events,  -> {where('date < ?',  Date.today)}
   scope :future_events,  -> {where('date >= ?', Date.today)}
+  scope :cheapest, -> {where('cost == ?','Free')}
 
   def current_rsvp
     self.rsvps.collect do |rsvp|

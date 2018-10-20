@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, only: [:new, :index, :create]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create, :edit, :index, :show]
+  before_action :logged_in?, only: [:new, :index, :create, :cheap]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :cheap]
+  before_action :set_user, only: [:new, :create, :edit, :index, :show, :cheap]
   before_action :authorized_to_edit?, only: [:show, :edit, :update]
+
+  def cheap
+    @cheap = Event.cheapest
+  end
 
   def index
     if !params[:date].blank?
@@ -16,6 +20,7 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+    @cheap = Event.cheapest
   end
 
   def new
@@ -31,6 +36,8 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
+
 
   def show
     @rsvps = @event.rsvps
@@ -49,6 +56,8 @@ class EventsController < ApplicationController
     flash[:info] = "Event has been deleted"
     redirect_to events_path
   end
+
+
 
 private
 
