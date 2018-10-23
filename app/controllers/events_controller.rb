@@ -4,10 +4,6 @@ class EventsController < ApplicationController
   before_action :set_user, only: [:new, :create, :edit, :index, :show, :cheap]
   before_action :authorized_to_edit?, only: [:show, :edit, :update]
 
-  def cheap
-    @cheap = Event.cheapest
-  end
-
   def index
     if !params[:date].blank?
       if params[:date]== 'Today Events'
