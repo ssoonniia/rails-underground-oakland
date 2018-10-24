@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require jquery
  //= require jquery_ujs
-
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -25,7 +24,8 @@ $(document).ready(function(){
       url: this.href,
       method: "GET",
       success: function(data){
-       // create js object rsvp 
+       // create js object rsvp
+       debugger; 
       }
     })
     e.preventDefault()

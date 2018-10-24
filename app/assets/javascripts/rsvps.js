@@ -5,8 +5,8 @@ function Rsvp(attributes){
 }
 
 Rsvp.success = function(json){
-  json.forEach(function(item){
-    var rsvp = new Rsvp(item)
+  var rsvps = data.map(function(item){
+    new Rsvp(item)
   });
 
   var rsvpLi = rsvp.renderLi()
