@@ -1,3 +1,9 @@
+
+$(document).ready(function(){
+  alert("from events.js")
+})
+
+
 function Event(attributes){
   this.name = attributes.name;
   this.id = attributes.id;
@@ -7,4 +13,6 @@ function Event(attributes){
   this.cost = attributes.cost;
   this.description = attributes.cost;
   this.user_id = attributes.user_id
+  this.rsvps = attributes.rsvps
+  this.attending_user = attributes.attending_user
 }
