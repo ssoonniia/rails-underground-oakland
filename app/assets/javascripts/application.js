@@ -10,14 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
-
-//= require rails-ujs
 //= require jquery
+//= require events
+//= require rsvps
+//= require rails-ujs
+
  //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= require handlebars.min
+
+
 $(document).ready(function(){
   $("a.show_rsvps").on('click', function(e){
     $.ajax({
@@ -25,7 +29,7 @@ $(document).ready(function(){
       method: "GET",
       success: function(data){
        // create js object rsvp
-       debugger; 
+       debugger;
       }
     })
     e.preventDefault()
