@@ -1,12 +1,8 @@
-$(document).ready(function(){
-  console.log("from rsvps.js")
-})
-
-
 function Rsvp(attributes){
     this.guest = attributes.guests,
     this.user = attributes.user.username,
     this.event = attributes.event.name
+    // this.event = new Event.(attributes.event)
 }
 
 Rsvp.success = function(json){
@@ -37,6 +33,7 @@ Rsvp.prototype.renderLi = function(){
 $(document).ready(function(){
   Rsvp.source = $("#guests-template").html();
   Rsvp.template = Handlebars.compile(Rsvp.source)
+  debugger ;
   $("a.show_rsvps").on('click', function(e){
     debugger;
     $.ajax({

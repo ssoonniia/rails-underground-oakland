@@ -1,9 +1,3 @@
-
-$(document).ready(function(){
-  alert("from events.js")
-})
-
-
 function Event(attributes){
   this.name = attributes.name;
   this.id = attributes.id;
