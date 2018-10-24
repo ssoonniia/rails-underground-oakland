@@ -25,8 +25,7 @@ $(document).ready(function(){
       url: this.href,
       method: "GET",
       success: function(data){
-        debugger 
-            console.log(data.response)
+       // create js object rsvp 
       }
     })
     e.preventDefault()
