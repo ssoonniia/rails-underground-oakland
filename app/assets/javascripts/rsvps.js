@@ -6,23 +6,28 @@ function Rsvp(attributes){
 
 Rsvp.success = function(json){
   var rsvps = data.map(function(item){
-    new Rsvp(item)
+    return new Rsvp(item)
   });
-
   // tested and returned
 // (2) [Rsvp, Rsvp]
 // 0: Rsvp {guest: 1, user: "jack", event: "First Fridays"}
 // 1: Rsvp {guest: 1, user: "Sonia Duarte Nicas", event: "First Fridays"}
 // length: 2
-  var rsvpLi = rsvp.renderLi();
-  $('.guests').append(rsvpLi);
+  var rsvpsLi = rsvps.renderLi();
+  $('.guests').append(rsvpsLi);
 }
 
-Rsvp.error = (function(response){
+Rsvp.error = function(response){
   console.log('Sorry! Something went wrong', response)
 })
 
 $(function(){
-  Rsvp.templateSource = $("#guests-template").html();
-  Rsvp.template = handlebars.compile(Rsvp.templateSource)
+  Rsvp.source = $("#guests-template").html();
+  Rsvp.template = Handlebars.compile(Rsvp.source)
 })
+
+// prefill and return template
+
+Rsvp.prototype.renderLi = function(){
+  return Rsvp.template(this)
+}
