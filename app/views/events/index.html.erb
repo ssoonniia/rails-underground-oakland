@@ -18,6 +18,6 @@
   <% end %>
 
   <% if event.rsvps.size > 0 %>
-    <%= link_to 'Guest List', event_rsvps_path(event) %>
+    <%= link_to 'Guest List', event_rsvps_path(event), :class => 'show_rsvps'%>
   <% end %>
 <% end %>

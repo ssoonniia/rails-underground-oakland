@@ -8,3 +8,12 @@ function Event(attributes){
   this.description = attributes.cost;
   this.user_id = attributes.user_id
 }
+
+$(document).ready(function(){
+  $(".show_rsvps").on("click", function(e){
+
+      alert('I was clicked from events')
+    e.preventDefault()
+
+  })
+})
