@@ -7,20 +7,11 @@ function Rsvp(attributes){
 }
 
 function success(json){
-   json.forEach(function(item){
-    var rsvp = new Rsvp(item)
-   var results = rsvp.renderLi(rsvp)
- return $("div#add_guests_"+String(rsvp.event_id)).append(results)
+  json.forEach(function(item){
+  var rsvp = new Rsvp(item)
+  // var results = rsvp.renderLi()
+ return $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
 });
-
-
-//   tested and returned
-// (2) [Rsvp, Rsvp]
-// 0: Rsvp {guest: 1, user: "jack", event: "First Fridays"}
-// 1: Rsvp {guest: 1, user: "Sonia Duarte Nicas", event: "First Fridays"}
-// length: 2
-  // var rsvpsLi = rsvps.renderLi();
-;
 }
 
 Rsvp.error = function(response){
@@ -38,15 +29,17 @@ Rsvp.prototype.renderLi = function(){
 $(document).ready(function(){
   Rsvp.source = $("#guests-template").html();
   Rsvp.template = Handlebars.compile(Rsvp.source)
-
   $("a.show_rsvps").on('click', function(e){
     e.preventDefault()
+    $(this).prop("disabled", true)
     $.ajax({
       url: this.href,
       method: "GET",
       success: function(response){
         success(response)
       }
+      // refractor to add error
+      // refractor to disable link
     })
   })
 })

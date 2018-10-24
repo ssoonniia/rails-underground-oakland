@@ -12,7 +12,6 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %>
-   <div id="add_guests_<%=event.id %>"></div>
 
   <% if future_event?(event) %>
     <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
@@ -21,13 +20,13 @@
   <% if event.rsvps.size > 0 %>
     <%= link_to 'Guest List', event_rsvps_path(event), :class => 'show_rsvps'%>
   <% end %>
+    <div id="add_guests_<%=event.id %>"></div>
 <% end %>
 
 
 
 <script id="guests-template" type="text/x-handlebars-template">
-
-    <p>{{user}}</p>
-    <p>{{guest}}</p>
-
+  <ul>
+    <li>{{user}} is attending with {{guest}} guests</li>
+  </ul>
 </script>
