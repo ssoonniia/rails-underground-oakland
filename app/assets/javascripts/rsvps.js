@@ -9,6 +9,20 @@ Rsvp.success = function(json){
     new Rsvp(item)
   });
 
-  var rsvpLi = rsvp.renderLi()
-  $('.guests').append(rsvpLi)
+  // tested and returned
+// (2) [Rsvp, Rsvp]
+// 0: Rsvp {guest: 1, user: "jack", event: "First Fridays"}
+// 1: Rsvp {guest: 1, user: "Sonia Duarte Nicas", event: "First Fridays"}
+// length: 2
+  var rsvpLi = rsvp.renderLi();
+  $('.guests').append(rsvpLi);
 }
+
+Rsvp.error = (function(response){
+  console.log('Sorry! Something went wrong', response)
+})
+
+$(function(){
+  Rsvp.templateSource = $("#guests-template").html();
+  Rsvp.template = handlebars.compile(Rsvp.templateSource)
+})
