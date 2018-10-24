@@ -12,6 +12,7 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %>
+   <div id="add_guests_<%=event.id %>"></div>
 
   <% if future_event?(event) %>
     <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
@@ -22,11 +23,11 @@
   <% end %>
 <% end %>
 
-<div class="guests"></div>
+
 
 <script id="guests-template" type="text/x-handlebars-template">
-  {{#each rsvps}}
-    <p>{{username}}</p>
-    <p>{{guests}}</p>
-  {{/each}}
+
+    <p>{{user}}</p>
+    <p>{{guest}}</p>
+
 </script>
