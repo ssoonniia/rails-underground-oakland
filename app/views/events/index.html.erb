@@ -22,6 +22,11 @@
   <% end %>
 <% end %>
 
-<div class="guests">
+<div class="guests"></div>
 
-</div>
+<script id="guests-template" type="text/x-handlebars-template">
+  {{#each rsvps}}
+    <p>{{username}}</p>
+    <p>{{guests}}</p>
+  {{/each}}
+</script>
