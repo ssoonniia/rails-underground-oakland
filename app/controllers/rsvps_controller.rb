@@ -14,7 +14,7 @@ class RsvpsController < ApplicationController
        redirect_to events_path
      end
     @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
-      if @rsvp.save 
+      if @rsvp.save
          flash[:info] = "Thanks for your RSVP"
          redirect_to events_path
       else
@@ -24,6 +24,7 @@ class RsvpsController < ApplicationController
 
   def index
     @rsvps = @event.rsvps
+    render json: @rsvps
   end
 
   def destroy

@@ -25,8 +25,10 @@ $(document).ready(function(){
       url: this.href,
       method: "GET",
       success: function(data){
-            console.log(data)
+        debugger 
+            console.log(data.response)
       }
     })
+    e.preventDefault()
   })
 })
