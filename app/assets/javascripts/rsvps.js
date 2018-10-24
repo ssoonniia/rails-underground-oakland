@@ -31,7 +31,6 @@ $(document).ready(function(){
   Rsvp.template = Handlebars.compile(Rsvp.source)
   $("a.show_rsvps").on('click', function(e){
     e.preventDefault()
-    $(this).prop("disabled", true)
     $.ajax({
       url: this.href,
       method: "GET",
