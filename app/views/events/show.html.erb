@@ -1,4 +1,4 @@
-<%= button_to "Next Event", :method => :get %>
+<%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1]}", class: "next" %>
 
 <%= render partial: "event_info", locals: {event: @event} %>
 
