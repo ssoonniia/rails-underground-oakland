@@ -1,5 +1,6 @@
-<%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1]}", class: "next" %>
-
+<% if @user_events[@user_events.index(@event) + 1] %>
+  <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
+<% end %>
 <%= render partial: "event_info", locals: {event: @event} %>
 
 
