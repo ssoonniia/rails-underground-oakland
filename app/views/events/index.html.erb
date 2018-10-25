@@ -14,7 +14,7 @@
   <%= render partial: "event_info", locals: {event: event} %>
 
   <% if future_event?(event) %>
-    <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+    <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event), :class =>"new_guest" %> </h3>
   <% end %>
 
   <% if event.rsvps.size > 0 %>
