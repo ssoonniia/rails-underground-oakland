@@ -43,4 +43,10 @@ $(document).ready(function(){
     })
   })
 
+$(".new_guest").on('click', function(y){
+  y.preventDefault()
+  // trying to render form after rsvp but not working
+  // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
+
+})
 })

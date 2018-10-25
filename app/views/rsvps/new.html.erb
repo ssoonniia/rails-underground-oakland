@@ -2,6 +2,6 @@ Please review and confirm your RSVP.
 <%= render "layouts/errors", object: @rsvp %>
 <%= render partial: "event_info", locals: {event: @event} %>
 
-<%= render partial: "rsvp_form" %> 
+<%= render partial: "rsvp_form" locals: {user: @user, event: @event, rsvp. @rsvp} %> 
 
 <br></br>
