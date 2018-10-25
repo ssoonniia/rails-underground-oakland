@@ -41,7 +41,12 @@ class EventsController < ApplicationController
   def show
     @rsvps = @event.rsvps
     @user_events = @user.events
-    respond_to :html, :json
+    # respond_to :html, :json
+    respond_to do |format|
+      format.html
+      format.json {render :json => @event}
+    end
+    # render :json => @event
   end
 
   def edit
