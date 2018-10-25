@@ -13,9 +13,10 @@
 //= require jquery
 //= require events
 //= require rsvps
+//= require users
 //= require rails-ujs
  //= require jquery_ujs
+//= require handlebars.min
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require handlebars.min

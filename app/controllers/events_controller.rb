@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
-    @cheap = Event.cheapest
+    @event = Event.new
   end
 
   def new

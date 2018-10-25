@@ -7,6 +7,11 @@
     Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
 <% end %>
 
+
+<div class="add_new_event">
+
+</div>
+
 <% @user_events.each do |event| %>
   <p><%= link_to "#{event.name}", event_path(event) %></p>
 <% end %>
@@ -25,5 +30,5 @@
   <% end %>
 <% end %>
 
-<h3><%=link_to 'Create A New Event', new_event_path %></h3>
+
 <h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>

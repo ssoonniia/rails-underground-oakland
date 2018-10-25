@@ -29,6 +29,7 @@ Rsvp.prototype.renderLi = function(){
 $(document).ready(function(){
   Rsvp.source = $("#guests-template").html();
   Rsvp.template = Handlebars.compile(Rsvp.source)
+
   $("a.show_rsvps").on('click', function(e){
     e.preventDefault()
     $.ajax({
@@ -41,4 +42,5 @@ $(document).ready(function(){
       // refractor to disable link
     })
   })
+
 })
