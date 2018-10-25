@@ -58,16 +58,19 @@ function successRsvp(json){
   $(".confirmed_guests").append(template)
 }
 
-$(".attending_event").on('click', function(y){
+$(".new_rsvp").on('submit', function(y){
   y.preventDefault()
   Rsvp.sourceNewRsvp = $("#rsvp_template").html()
   Rsvp.templateNewRsvp = Handlebars.compile(Rsvp.sourceNewRsvp)
 
   $.ajax({
-    url: this.href,
+    url: this.action,
     method: "POST",
+
     success: function(response){
+      debugger
       successRsvp(response)
+
     }
   })
   // trying to render form after rsvp but now
