@@ -2,10 +2,6 @@ Please review and confirm your RSVP.
 <%= render "layouts/errors", object: @rsvp %>
 <%= render partial: "event_info", locals: {event: @event} %>
 
-<%= form_for [@user, @event, @rsvp] do |f| %>
-    <h3>Number of Guests: <%= f.number_field :guests, min: 0 %></h3>
-    <%= f.submit %>
-<% end %>
-
+<%= render partial: "rsvp_form" %> 
 
 <br></br>

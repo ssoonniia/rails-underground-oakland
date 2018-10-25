@@ -1,0 +1,4 @@
+<%= form_for [@user, @event, @rsvp] do |f| %>
+    <h3>Number of Guests: <%= f.number_field :guests, min: 0 %></h3>
+    <%= f.submit %>
+<% end %>
