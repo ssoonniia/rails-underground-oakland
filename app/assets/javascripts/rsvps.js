@@ -45,11 +45,18 @@ $(document).ready(function(){
 
 $(".attending_event").on('click', function(y){
   y.preventDefault()
-  
+
+  $.ajax({
+    url: this.href,
+    method: "POST",
+    debugger
+  })
   // trying to render form after rsvp but now
   // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
   // also tried this link
   // <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %>
+
+
 
 })
 })
