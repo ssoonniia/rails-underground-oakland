@@ -11,11 +11,10 @@
 
 
 <% @events.each do |event| %>
-  <%= render partial: "event_info", locals: {event: event} %>
+  <%= render partial: "event_info", locals: {event: event} %><br></br>
 
   <% if future_event?(event) %>
-  <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %> 
-    <h3><%= link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event), :class =>"new_guest" %> </h3>
+    <h3>Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></h3>
   <% end %>
 
   <div class="add_rsvp_form"></div>

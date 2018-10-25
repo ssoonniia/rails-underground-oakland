@@ -45,8 +45,10 @@ $(document).ready(function(){
 
 $(".new_guest").on('click', function(y){
   y.preventDefault()
-  // trying to render form after rsvp but not working
+  // trying to render form after rsvp but now
   // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
+  // also tried this link
+  // <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %>
 
 })
 })
