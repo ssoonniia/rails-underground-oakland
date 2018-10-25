@@ -43,13 +43,32 @@ $(document).ready(function(){
     })
   })
 
+
+
+// new feature of add single rsvp
+
+Rsvp.prototype.renderRsvp = function(){
+  return Rsvp.templateNewRsvp(this)
+}
+
+
+function successRsvp(json){
+  var rsvp = new Rsvp(json)
+  var template = rsvp.renderRsvp()
+  $(".confirmed_guests").append(template)
+}
+
 $(".attending_event").on('click', function(y){
   y.preventDefault()
+  Rsvp.sourceNewRsvp = $("#rsvp_template").html()
+  Rsvp.templateNewRsvp = Handlebars.compile(Rsvp.sourceNewRsvp)
 
   $.ajax({
     url: this.href,
     method: "POST",
-    debugger
+    success: function(response){
+      successRsvp(response)
+    }
   })
   // trying to render form after rsvp but now
   // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
