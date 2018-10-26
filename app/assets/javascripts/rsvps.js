@@ -69,6 +69,7 @@ $(".new_rsvp").on('submit', function(y){
 
       successRsvp(response)
 
+
     }
   })
   $("div#rsvp_form").html("")
@@ -91,6 +92,7 @@ Rsvp.prototype.renderRsvp = function(){
 function successRsvp(json){
   var rsvp = new Rsvp(json)
   var template = rsvp.renderRsvp()
+  $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
 
   $("div#guest_for_event_"+String(rsvp.event_id)).append(template)
 }
