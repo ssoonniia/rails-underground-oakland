@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, only: [:new, :index, :create, :cheap]
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :cheap]
-  before_action :set_user, only: [:new, :create, :edit, :index, :show, :cheap]
+  before_action :logged_in?, only: [:new, :index, :create, :next]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :next]
+  before_action :set_user, only: [:new, :create, :edit, :index, :show, :next]
   before_action :authorized_to_edit?, only: [:show, :edit, :update]
 
   def index
@@ -60,6 +60,9 @@ class EventsController < ApplicationController
     @event.delete
     flash[:info] = "Event has been deleted"
     redirect_to events_path
+  end
+
+  def next
   end
 
 

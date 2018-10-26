@@ -10,6 +10,8 @@ function success(json){
   json.forEach(function(item){
   var rsvp = new Rsvp(item)
   // var results = rsvp.renderLi()
+
+
  return $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
 });
 }
@@ -31,16 +33,22 @@ $(document).ready(function(){
   Rsvp.template = Handlebars.compile(Rsvp.source)
 
   $("a.show_rsvps").on('click', function(e){
+
     e.preventDefault()
+
     $.ajax({
       url: this.href,
       method: "GET",
       success: function(response){
         success(response)
+
+
       }
       // refractor to add error
       // refractor to disable link
     })
+    var link = $(this).attr('href')
+     $(this).removeAttr('href')
   })
 
 
@@ -82,5 +90,6 @@ Rsvp.prototype.renderRsvp = function(){
 function successRsvp(json){
   var rsvp = new Rsvp(json)
   var template = rsvp.renderRsvp()
+
   $("div#guest_for_event_"+String(rsvp.event_id)).append(template)
 }
