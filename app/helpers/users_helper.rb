@@ -15,5 +15,10 @@ module UsersHelper
       end
     end
   end
-  
+
+
+  def already_rsvp(user, event)
+    user.attending_events.include?(event)
+  end
+
 end
