@@ -16,7 +16,7 @@
 
   <% if future_event?(event) && !already_rsvp(@user,event) %>
     <div class="attending_event">
-      <h3>Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></h3>
+      <div id = "rsvp_form">Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></div>
     </div>
   <% end %>
 

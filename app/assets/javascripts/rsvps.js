@@ -71,6 +71,7 @@ $(".new_rsvp").on('submit', function(y){
 
     }
   })
+  $("div#rsvp_form").html("")
   // trying to render form after rsvp but now
   // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
   // also tried this link

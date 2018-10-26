@@ -41,10 +41,10 @@ $(document).ready(function(){
    })
   })
 
-$('.create_event').on('click', function(y){
-  y.preventDefault()
-  $('.add_new_event').html("<%=escape_javascript(render form )%>")
-})
+// $('.create_event').on('click', function(y){
+//   y.preventDefault()
+//   // $('.add_new_event').html("<%=escape_javascript(render form )%>")
+// })
 
 
 })
