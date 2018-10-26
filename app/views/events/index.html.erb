@@ -12,15 +12,14 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %><br></br>
+  <div class="guest_for_event_<%=event.id%>"></div>
 
   <% if future_event?(event) %>
     <div class="attending_event">
       <h3>Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></h3>
     </div>
 
-<div class="confirmed_guests">
 
-</div>
 <!--handlebars confirmed rsvp template -->
 <script id="rsvp_template" type="text/x-handlebars-template">
   <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
