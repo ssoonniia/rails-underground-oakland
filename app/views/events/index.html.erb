@@ -12,7 +12,7 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event} %><br></br>
-  <div class="guest_for_event_<%=event.id%>"></div>
+  <div id="guest_for_event_<%=event.id%>"></div>
 
   <% if future_event?(event) %>
     <div class="attending_event">

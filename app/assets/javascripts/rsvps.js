@@ -82,5 +82,6 @@ Rsvp.prototype.renderRsvp = function(){
 function successRsvp(json){
   var rsvp = new Rsvp(json)
   var template = rsvp.renderRsvp()
-  $(".confirmed_guests").append(template)
+  debugger
+  $("div#guest_for_event_"+String(rsvp.event_id)).append(template)
 }
