@@ -16,6 +16,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
       if @rsvp.save
          flash[:info] = "Thanks for your RSVP"
+         
          render json: @rsvp
       # else
       #   render :new

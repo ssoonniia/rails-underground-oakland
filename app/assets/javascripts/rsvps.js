@@ -47,6 +47,33 @@ $(document).ready(function(){
 
 // new feature of add single rsvp
 
+Rsvp.sourceNewRsvp = $("#rsvp_template").html()
+Rsvp.templateNewRsvp = Handlebars.compile(Rsvp.sourceNewRsvp)
+
+$(".new_rsvp").on('submit', function(y){
+     y.preventDefault()
+
+  $.ajax({
+    url: this.action,
+    method: "POST",
+    data: $( this ).serialize(),
+    success: function(response){
+
+      successRsvp(response)
+
+    }
+  })
+  // trying to render form after rsvp but now
+  // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
+  // also tried this link
+  // <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %>
+
+})
+})
+
+
+
+
 Rsvp.prototype.renderRsvp = function(){
   return Rsvp.templateNewRsvp(this)
 }
@@ -57,28 +84,3 @@ function successRsvp(json){
   var template = rsvp.renderRsvp()
   $(".confirmed_guests").append(template)
 }
-
-$(".new_rsvp").on('submit', function(y){
-  y.preventDefault()
-  Rsvp.sourceNewRsvp = $("#rsvp_template").html()
-  Rsvp.templateNewRsvp = Handlebars.compile(Rsvp.sourceNewRsvp)
-
-  $.ajax({
-    url: this.action,
-    method: "POST",
-
-    success: function(response){
-      debugger
-      successRsvp(response)
-
-    }
-  })
-  // trying to render form after rsvp but now
-  // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
-  // also tried this link
-  // <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %>
-
-
-
-})
-})
