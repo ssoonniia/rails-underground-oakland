@@ -62,7 +62,8 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def next
+  def scroll
+    
   end
 
 
