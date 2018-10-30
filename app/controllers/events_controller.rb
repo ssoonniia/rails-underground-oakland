@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :logged_in?, only: [:new, :index, :create, :next]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :next]
-  before_action :set_user, only: [:new, :create, :edit, :index, :show, :next]
+  before_action :set_user, only: [:new, :create, :edit, :index, :show, :next, :scroll]
   before_action :authorized_to_edit?, only: [:show, :edit, :update]
 
   def index
@@ -63,7 +63,8 @@ class EventsController < ApplicationController
   end
 
   def scroll
-    
+    @user_events = @user.events
+  
   end
 
 
