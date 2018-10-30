@@ -1,7 +1,9 @@
-<% if @user_events[@user_events.index(@event) + 1] %>
+<% @current_event = 0  %>
 
-  <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
-<% end %>
+<% @user_events[@current_event] %>
+
+<%= link_to "Next Event", "/events/#{@user_events[@current_event + 1].id}", class: "next" %>
+
 
 
 <script id="event-template" type="text/x-handlebars-template">
