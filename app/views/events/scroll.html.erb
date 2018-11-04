@@ -1,9 +1,8 @@
-<% @current_event = 0  %>
 
-<% @user_events[@current_event] %>
 
-<%= link_to "Next Event", "/events/#{@user_events[@current_event + 1].id}", class: "next" %>
 
+
+<%= render partial: "event_info", locals: {event: @event} %>
 
 
 <script id="event-template" type="text/x-handlebars-template">
