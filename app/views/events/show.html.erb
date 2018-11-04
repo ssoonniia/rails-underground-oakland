@@ -1,22 +1,17 @@
-<% if @user_events[@user_events.index(@event) + 1] %>
-  <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
-<% end %>
-
 <div id="show_event">
 <%= render partial: "event_info", locals: {event: @event} %>
 </div>
-<script id="event-template" type="text/x-handlebars-template">
+<!-- <script id="event-template" type="text/x-handlebars-template">
 
   <h1>{{name}}</h1>
-  <h3>Date: {{date}}</h3>
-  <h3>Time: {{time}}</h3>
-  <h3>Cost: {{cost}}</h3>
-  <h3>Location: {{location}}</h3>
-  <h3>Description: {{description}}</h3>
+  <h3>{{date}}</h3>
+  <h3>{{cost}}</h3>
+  <h3>{{location}}</h3>
+  <h3>{{description}}</h3>
 
 </script>
 
-<br></br>
+<br></br> -->
 
 <%= link_to 'Edit Event', edit_event_path %> <br></br>
 
