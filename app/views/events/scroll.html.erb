@@ -1,9 +1,13 @@
+<%@event_index = @user_events.index(@event)%>
+<%if @event_index < @user_events.length - 1%>
 
+  <%= link_to "Next Event", "/events/#{@user_events[@event_index + 1].id}", class: "next" %>
 
+<%end%>
 
-
-<%= render partial: "event_info", locals: {event: @event} %>
-
+<div class="show_next_event">
+  <%= render partial: "event_info", locals: {event: @event} %>
+</div>
 
 <script id="event-template" type="text/x-handlebars-template">
 
