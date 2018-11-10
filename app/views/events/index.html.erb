@@ -12,12 +12,13 @@
 
 <% @events.each do |event| %>
   <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
-  <div id="guest_for_event_<%=event.id%>"></div>
 
-  <% if future_event?(event) && !already_rsvp(@user,event) %>
-    <div class="attending_event">
-      <div id = "rsvp_form">Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></div>
-    </div>
+  <div id="guest_for_event_<%=event.id%>"></div>
+  <% if future_event?(event) && !already_rsvp(@user, event) %>
+    <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+    <!-- <div class="attending_event"> -->
+      <!-- <div id = "rsvp_form">Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></div> -->
+    <!-- </div> -->
   <% end %>
 
 <!--handlebars confirmed rsvp template -->
@@ -40,8 +41,7 @@
   </ul>
 </script>
 
-<div id
-="add_event"></div>
+<div id="add_event"></div>
 
 
 <script id="new_event_template" type="text/x-handlebars-template">
@@ -51,16 +51,6 @@
   <h3>Cost: {{cost}}</h3>
   <h3>Location: {{location}}</h3>
   <h3>Description: {{description}}</h3>
-
-
-  <h1><%= event.name %></h1>
-  <h3>Date: <%= dispaly_date(event) %></h3>
-  <h3>Time: <%= display_time(event) %></h3>
-  <h3>Cost: <%= event.cost %></h3>
-  <h3>Location: <%= event.location %></h3>
-  <h3>Description: <%= event.description %></h3>
-
-
 </script>
 
 
