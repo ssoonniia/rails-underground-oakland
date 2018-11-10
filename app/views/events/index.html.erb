@@ -11,7 +11,7 @@
 
 
 <% @events.each do |event| %>
-  <%= render partial: "event_info", locals: {event: event} %><br></br>
+  <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
   <div id="guest_for_event_<%=event.id%>"></div>
 
   <% if future_event?(event) && !already_rsvp(@user,event) %>
@@ -40,7 +40,30 @@
   </ul>
 </script>
 
+<div id
+="add_event"></div>
 
-<div class="add_event_form">
+
+<script id="new_event_template" type="text/x-handlebars-template">
+  <h1>{{name}}</h1>
+  <h3>Date: {{date}}</h3>
+  <h3>Time: {{time}}</h3>
+  <h3>Cost: {{cost}}</h3>
+  <h3>Location: {{location}}</h3>
+  <h3>Description: {{description}}</h3>
+
+
+  <h1><%= event.name %></h1>
+  <h3>Date: <%= dispaly_date(event) %></h3>
+  <h3>Time: <%= display_time(event) %></h3>
+  <h3>Cost: <%= event.cost %></h3>
+  <h3>Location: <%= event.location %></h3>
+  <h3>Description: <%= event.description %></h3>
+
+
+</script>
+
+
+<div id="new_event">
   <%=render  partial: "form", locals:{event: @event = Event.new}%>
 </div>
