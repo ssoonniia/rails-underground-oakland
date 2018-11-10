@@ -5,7 +5,7 @@ function Event(attributes){
   this.time = attributes.time;
   this.location = attributes.location;
   this.cost = attributes.cost;
-  this.description = attributes.description;
+  this.description = attributes.cost;
   this.user_id = attributes.user_id
   this.rsvps = attributes.rsvps
   this.attendingUser = attributes.attending_user
@@ -13,6 +13,7 @@ function Event(attributes){
 
 function successEvent(json){
   var event = new Event(json)
+
   var eventTemp = event.renderLi()
   $('div#show_event').html("")
   $('div#show_event').html(eventTemp)
@@ -38,13 +39,17 @@ $(document).ready(function(){
      success: function(response){
        successEvent(response)
      }
+     // close success
    })
+   // close ajax
   })
+   // close click event
+   $("#new_event.new_event").on('click', function(y){
+     y.preventDefault()
 
-// $('.create_event').on('click', function(y){
-//   y.preventDefault()
-//   // $('.add_new_event').html("<%=escape_javascript(render form )%>")
-// })
+     $.ajax({
+       
+     })
 
-
+   })
 })
