@@ -6,9 +6,11 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.user_id = attributes.user_id
+  this.userId = attributes.user_id
   this.rsvps = attributes.rsvps
   this.attendingUser = attributes.attending_user
+  this.displayDate = attributes.display_date
+  this.displayTime = attributes.display_time
 }
 
 function successEvent(json){
@@ -59,19 +61,16 @@ $(document).ready(function(){
        method: "POST",
        data: $( this ).serialize(),
        success: function(response){
-         // debugger
        successNewEvent(response)
 
        }
      })
       $("form#new_event.new_event")[0].reset()
-
    })
 
    function successNewEvent(json){
      var event = new Event(json)
      var newEventTemp = event.renderEvent()
      $('div#add_event').html(newEventTemp)
-     // $("#new_event_template").reset()
    }
 })
