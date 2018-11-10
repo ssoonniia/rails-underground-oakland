@@ -26,7 +26,6 @@
 </script>
 
 
-
   <div class="add_rsvp_form"></div>
 
   <% if event.rsvps.size > 0 %>
@@ -40,3 +39,8 @@
     <li>{{user}} is attending with {{guest}} guests</li>
   </ul>
 </script>
+
+
+<div class="add_event_form">
+  <%=render  partial: "form", locals:{event: @event = Event.new}%>
+</div>
