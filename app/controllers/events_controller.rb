@@ -64,7 +64,7 @@ class EventsController < ApplicationController
 
   def scroll
     @user_events = @user.events
-  
+
   end
 
 

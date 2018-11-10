@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get 'events/scroll' => 'events#scroll'
   get ':id/delete'=> 'events#destroy'
   get 'auth/:provider' => redirect("/auth/google_oauth2")
   get 'auth/:provider/callback' => 'sessions#create_with_google'
   get 'auth/failure' => redirect('/')
-  get 'events/scroll' => 'events#scroll'
+
 
   resources :users , except: [:destory]
   resources :events

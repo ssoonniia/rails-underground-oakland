@@ -9,7 +9,7 @@
 
 
 <div class="add_new_event">
-
+<h3><%=link_to 'Create A New Event', new_event_path %></h3>
 </div>
 
 <% @user_events.each do |event| %>
@@ -32,7 +32,7 @@
 
 
 
-<h2><%=link_to 'Scroll you events!', events_scroll_path(@user_events) %> </h2>
+<h2><%=link_to 'Scroll Your Events!', events_scroll_path(@user_events) %> </h2>
 
 
 <h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>

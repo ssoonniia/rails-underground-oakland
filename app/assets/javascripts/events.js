@@ -6,11 +6,10 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.userId = attributes.user.id
+  this.userId = attributes.user_id
   this.rsvps = attributes.rsvps
   this.attendingUser = attributes.attending_user
   this.displayDate = attributes.display_date
-  this.displayTime = attributes.display_time
 }
 
 function successEvent(json){
@@ -44,7 +43,6 @@ $(document).ready(function(){
      dataType: "json",
      success: function(response){
        successEvent(response)
-
      }
      // close success
    })
