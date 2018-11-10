@@ -1,18 +1,29 @@
+<% if @user_events[@user_events.index(@event) + 1] %>
+  <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
+<% end %>
+
 <div id="show_event">
 <%= render partial: "event_info", locals: {event: @event} %>
+<%= link_to 'Edit Event', edit_event_path, class: "edit_event_link"%> <br></br>
+<%= link_to 'Delete Event', event_path, method: :delete %><br></br>
 </div>
-<!-- <script id="event-template" type="text/x-handlebars-template">
+
+
+
+
+
+<script id="event-template" type="text/x-handlebars-template">
 
   <h1>{{name}}</h1>
-  <h3>{{date}}</h3>
-  <h3>{{cost}}</h3>
-  <h3>{{location}}</h3>
-  <h3>{{description}}</h3>
+  <h3>Date: {{date}}</h3>
+  <h3>Time: {{time}}</h3>
+  <h3>Cost: {{cost}}</h3>
+  <h3>Location: {{location}}</h3>
+  <h3>Description: {{description}}</h3>
+
+<a class="edit_event_link" href="{{id}}/edit">Edit Event</a><br></br>
+<a class="delete_event" href="{{id}}/delete" method="delete">Delete</a><br></br>
 
 </script>
 
-<br></br> -->
-
-<%= link_to 'Edit Event', edit_event_path %> <br></br>
-
-<%= button_to 'Delete Event', event_path, method: :delete %><br></br>
+<br></br>
