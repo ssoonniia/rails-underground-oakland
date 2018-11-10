@@ -9,17 +9,16 @@ class RsvpsController < ApplicationController
 
   def create
     @events = Event.all
-     # if @event.current_rsvp.include?(@user.id)
-     #   flash[:info] = "You've already RSVP to this event. You're all set!"
-     #   redirect_to events_path
-     # end
+     if @event.current_rsvp.include?(@user.id)
+       flash[:info] = "You've already RSVP to this event. You're all set!"
+       redirect_to events_path
+     end
     @rsvp = Rsvp.create(user_id: @user.id, event_id: @event.id, guests: params[:rsvp][:guests])
       if @rsvp.save
          flash[:info] = "Thanks for your RSVP"
-         
-         render json: @rsvp
-      # else
-      #   render :new
+         redirect_to events_path
+      else
+        render :new
     end
   end
 
