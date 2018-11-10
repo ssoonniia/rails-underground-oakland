@@ -1,9 +1,9 @@
 function Rsvp(attributes){
     this.guest = attributes.guests,
     this.user = attributes.user.username,
-    this.event = attributes.event.name
-    this.event_id = attributes.event.id
-    // this.event = new Event.(attributes.event)
+    // this.event = attributes.event.name
+    // this.event_id = attributes.event.id
+    this.event = new Event(attributes.event)
 }
 
 function success(json){
@@ -66,10 +66,10 @@ $(".new_rsvp").on('submit', function(y){
     method: "POST",
     data: $( this ).serialize(),
     success: function(response){
-
       successRsvp(response)
-
-
+    },
+    error: function(response){
+      console.log(response)
     }
   })
   $("div#rsvp_form").html("")
