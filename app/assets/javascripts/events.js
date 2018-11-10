@@ -24,6 +24,10 @@ Event.prototype.renderLi = function(){
   return Event.template(this)
 }
 
+Event.prototype.renderEvent=function(){
+  return Event.templateNewEvent(this)
+}
+
 
 $(document).ready(function(){
  $('a.next').on('click', function(e){
@@ -44,12 +48,30 @@ $(document).ready(function(){
    // close ajax
   })
    // close click event
-   $("#new_event.new_event").on('click', function(y){
+   $("#new_event.new_event").on('submit', function(y){
      y.preventDefault()
 
+     Event.sourceNewEvent = $("#new_event_template").html()
+     Event.templateNewEvent = Handlebars.compile(Event.sourceNewEvent)
+
      $.ajax({
-       
+       url:this.action,
+       method: "POST",
+       data: $( this ).serialize(),
+       success: function(response){
+         // debugger
+       successNewEvent(response)
+
+       }
      })
+      $("form#new_event.new_event")[0].reset()
 
    })
+
+   function successNewEvent(json){
+     var event = new Event(json)
+     var newEventTemp = event.renderEvent()
+     $('div#add_event').html(newEventTemp)
+     // $("#new_event_template").reset()
+   }
 })
