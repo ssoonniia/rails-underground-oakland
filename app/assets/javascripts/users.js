@@ -1,5 +1,5 @@
 function User(attributes){
-  this.username = attributes.name
+  this.username = attributes.username
   this.id = attributes.id
   this.email = attributes.email
   this.events = attributes.events
