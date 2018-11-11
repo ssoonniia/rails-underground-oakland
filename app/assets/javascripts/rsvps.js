@@ -3,6 +3,7 @@ function Rsvp(attributes){
     this.user = attributes.user.username,
     this.event = attributes.event.name
     this.event_id = attributes.event.id
+    // this.event = new Event(attributes.event)
 }
 
 function success(json){
@@ -12,7 +13,7 @@ function success(json){
 
 
  return $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
-  });
+});
 }
 
 Rsvp.error = function(response){
@@ -39,8 +40,9 @@ $(document).ready(function(){
       url: this.href,
       method: "GET",
       success: function(response){
-        debugger
+        // debugger
         success(response)
+
 
       }
       // refractor to add error
