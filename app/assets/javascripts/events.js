@@ -38,7 +38,7 @@ Event.prototype.renderEvent=function(){
 
 
 $(document).ready(function(){
- $('a.next').on('click', function(e){
+ $('#show_event').on('click', 'a.next',function(e){
    e.preventDefault();
 
    Event.templateSource = $('#event-template').html()
@@ -59,6 +59,7 @@ $(document).ready(function(){
    // close click event
    $("#new_event.new_event").on('submit', function(y){
      y.preventDefault()
+
 
      Event.sourceNewEvent = $("#new_event_template").html()
      Event.templateNewEvent = Handlebars.compile(Event.sourceNewEvent)
