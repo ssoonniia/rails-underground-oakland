@@ -1,4 +1,3 @@
-
 <div id="show_event">
   <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
   <%= render partial: "event_info", locals: {event: @event} %>
@@ -11,7 +10,7 @@
 
 
 <script id="event-template" type="text/x-handlebars-template">
- <a href="/events/{{idOfNext}}" class ="next">Next Event</a>
+ <a class ="next" href="/events/{{idOfNext}}" >Next Event</a>
 
   <h1>{{name}}</h1>
   <h3>Date: {{date}}</h3>
@@ -21,6 +20,6 @@
   <h3>Description: {{description}}</h3>
 
   <a href="{{id}}/edit">Edit Event</a><br></br>
-  <a href="{{id}}/delete" method="delete">Delete Event</a><br></br>
+  <a href="{{id}}" data-method="delete">Delete Event</a><br></br>
 
 </script>
