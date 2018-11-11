@@ -1,8 +1,6 @@
 
-  <!-- link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next"  -->
-
 <div id="show_event">
-
+  <%= link_to "Next Event", "/events/#{@user_events[@user_events.index(@event) + 1].id}", class: "next" %>
   <%= render partial: "event_info", locals: {event: @event} %>
   <%= link_to 'Edit Event', edit_event_path, class: "edit_event_link"%> <br></br>
   <%= link_to 'Delete Event', event_path, method: :delete %><br></br>
@@ -13,6 +11,7 @@
 
 
 <script id="event-template" type="text/x-handlebars-template">
+ <a href="/events/{{idOfNext}}" class ="next">Next Event</a>
 
   <h1>{{name}}</h1>
   <h3>Date: {{date}}</h3>
