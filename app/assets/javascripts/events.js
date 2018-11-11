@@ -9,7 +9,6 @@ function Event(attributes){
   this.user = attributes.user
   this.userId = attributes.user.id
   this.rsvps = attributes.rsvps
-  this.attendingUser = attributes.attending_user
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
   this.attendingUsers = attributes.attending_users
