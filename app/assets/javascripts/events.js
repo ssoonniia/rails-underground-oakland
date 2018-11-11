@@ -6,10 +6,11 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.userId = attributes.user_id
+  this.userId = attributes.user.id
   this.rsvps = attributes.rsvps
   this.attendingUser = attributes.attending_user
   this.displayDate = attributes.display_date
+  this.displayTime = attributes.display_time
 }
 
 function successEvent(json){
@@ -42,7 +43,10 @@ $(document).ready(function(){
      method: "GET",
      dataType: "json",
      success: function(response){
+       debugger
        successEvent(response)
+
+
      }
      // close success
    })
@@ -60,6 +64,7 @@ $(document).ready(function(){
        method: "POST",
        data: $( this ).serialize(),
        success: function(response){
+         // debugger
        successNewEvent(response)
 
        }
