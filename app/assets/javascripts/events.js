@@ -6,11 +6,12 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.userId = attributes.user.id
+  this.user = new User(attributes.user)
   this.rsvps = attributes.rsvps
   this.attendingUser = attributes.attending_user
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
+  this.attendingUsers = attributes.attending_users
 }
 
 function successEvent(json){
@@ -64,7 +65,7 @@ $(document).ready(function(){
        method: "POST",
        data: $( this ).serialize(),
        success: function(response){
-         // debugger
+         debugger
        successNewEvent(response)
 
        }
