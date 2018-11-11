@@ -6,7 +6,6 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.user = new User(attributes.user)
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
   this.attendingUsers = attributes.attending_users
@@ -14,7 +13,10 @@ function Event(attributes){
 
 function successEvent(json){
   var event = new Event(json)
-
+  var user = new User(json.user)
+  event.user = user
+  user.events.push(event)
+  
   var eventTemp = event.renderLi()
   $('div#show_event').html("")
   $('div#show_event').html(eventTemp)
