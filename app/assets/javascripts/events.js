@@ -6,9 +6,7 @@ function Event(attributes){
   this.location = attributes.location;
   this.cost = attributes.cost;
   this.description = attributes.cost;
-  this.user = attributes.user
-  this.userId = attributes.user.id
-  this.rsvps = attributes.rsvps
+  this.user = new User(attributes.user)
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
   this.attendingUsers = attributes.attending_users
