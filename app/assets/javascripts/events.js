@@ -9,14 +9,19 @@ function Event(attributes){
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
   this.attendingUsers = attributes.attending_users
+  this.user = new User(attributes.user)
+  this.idOfNext = 0
 }
 
 function successEvent(json){
   var event = new Event(json)
-  var user = new User(json.user)
-  event.user = user
-  user.events.push(event)
-  
+  var userEvents = event.user.events
+  var findEvent = userEvents.filter(function(item){
+    return item.id === event.id
+  })
+  event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
+
+
   var eventTemp = event.renderLi()
   $('div#show_event').html("")
   $('div#show_event').html(eventTemp)
@@ -44,9 +49,7 @@ $(document).ready(function(){
      method: "GET",
      dataType: "json",
      success: function(response){
-       debugger
        successEvent(response)
-
 
      }
      // close success
@@ -65,7 +68,6 @@ $(document).ready(function(){
        method: "POST",
        data: $( this ).serialize(),
        success: function(response){
-         debugger
        successNewEvent(response)
 
        }
