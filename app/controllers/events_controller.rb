@@ -26,10 +26,7 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @event.user_id = @user.id
     if @event.save
-      respond_to do |f|
-        f.html {redirect_to event_path(@event)}
-        f.json {render :json => @event}
-      end
+        render :json => @event
     else
       render :new
     end
