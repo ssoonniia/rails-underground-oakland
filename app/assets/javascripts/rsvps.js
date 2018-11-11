@@ -1,8 +1,8 @@
 function Rsvp(attributes){
     this.guest = attributes.guests,
-    this.user = attributes.user.username,
-    this.event = attributes.event.name
-    this.event_id = attributes.event.id
+    this.user = new User(attributes.user)
+    this.event = new Event(attributes.event)
+    // this.event_id = attributes.event.id
     // this.event = new Event(attributes.event)
 }
 
@@ -12,7 +12,7 @@ function success(json){
   // var results = rsvp.renderLi()
 
 
- return $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
+ return $("div#add_guests_"+String(rsvp.event.id)).append(rsvp.renderLi())
 });
 }
 
