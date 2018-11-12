@@ -3,8 +3,7 @@
 <% if has_events %>
     <h2>You have posted <%=pluralize(@user_events.size, 'Event')%> </h2>
   <% else %>
-    <h2>You haven't posted any events yet.
-    Don't be shy if you have something to share - create an event <%=link_to 'Create A New Event', new_event_path %></h2>
+    <h2>You haven't posted any events yet.</h2>
 <% end %>
 
 
@@ -31,8 +30,6 @@
 <% end %>
 
 
-
-<h2><%=link_to 'Scroll Your Events!', events_scroll_path(@user_events) %> </h2>
 
 
 <h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>
