@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     if @event.save
         render :json => @event
     else
-      render :new
+      render new: :json 
     end
   end
 

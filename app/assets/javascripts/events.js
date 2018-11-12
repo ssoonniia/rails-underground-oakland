@@ -71,7 +71,9 @@ $(document).ready(function(){
        success: function(response){
        successNewEvent(response)
 
-       }
+     }, error: function(response){
+       alert("Please complete the entire form before proceeding")
+     }
      })
       $("form#new_event.new_event")[0].reset()
    })
