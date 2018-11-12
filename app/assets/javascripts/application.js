@@ -18,5 +18,4 @@
  //= require jquery_ujs
 //= require handlebars.min
 //= require activestorage
-//= require turbolinks
 //= require_tree .
