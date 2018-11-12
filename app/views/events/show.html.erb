@@ -10,8 +10,9 @@
 
 
 <script id="event-template" type="text/x-handlebars-template">
-<a class ="next" href="/events/{{idOfNext}}" >Next Event</a>
-
+  {{#if idOfNext}}
+    <a class ="next" href="/events/{{idOfNext}}" >Next Event</a>
+  {{/if}}
   <h1>{{name}}</h1>
   <h3>Date: {{displayDate}}</h3>
   <h3>Time: {{displayTime}}</h3>

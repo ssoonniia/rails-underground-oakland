@@ -19,8 +19,9 @@ function successEvent(json){
   var findEvent = userEvents.filter(function(item){
     return item.id === event.id
   })
-  event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
-
+  if (userEvents[userEvents.indexOf(findEvent[0]) + 1]){
+    event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
+  }
 
   var eventTemp = event.renderLi()
   $('div#show_event').html("")
@@ -72,7 +73,7 @@ $(document).ready(function(){
        successNewEvent(response)
 
      }, error: function(response){
-       alert("Please complete the entire form before proceeding")
+       alert("Please complete the entire form before")
      }
      })
       $("form#new_event.new_event")[0].reset()
