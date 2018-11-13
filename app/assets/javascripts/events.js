@@ -5,7 +5,7 @@ function Event(attributes){
   this.time = attributes.time;
   this.location = attributes.location;
   this.cost = attributes.cost;
-  this.description = attributes.cost;
+  this.description = attributes.description;
   this.displayDate = attributes.display_date
   this.displayTime = attributes.display_time
   this.attendingUsers = attributes.attending_users
