@@ -16,9 +16,6 @@
   <div id="guest_for_event_<%=event.id%>"></div>
   <% if future_event?(event) && !already_rsvp(@user, event) %>
     <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
-    <!-- <div class="attending_event"> -->
-      <!-- <div id = "rsvp_form">Going? RSVP now! <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %></div> -->
-    <!-- </div> -->
   <% end %>
 
 <!--handlebars confirmed rsvp template -->

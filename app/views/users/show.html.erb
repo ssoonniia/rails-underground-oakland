@@ -6,9 +6,6 @@
     <h2>You haven't posted any events yet.</h2>
 <% end %>
 
-
-
-
 <% @user_events.each do |event| %>
   <p><%= link_to "#{event.name}", event_path(event) %></p>
 <% end %>
