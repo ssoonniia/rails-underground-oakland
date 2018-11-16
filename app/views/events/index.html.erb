@@ -24,7 +24,7 @@
 </script>
 
 
-  <div class="add_rsvp_form"></div>
+<div class="add_rsvp_form"></div>
 
   <% if event.rsvps.size > 0 %>
     <%= link_to 'Guest List', event_rsvps_path(event), :class => 'show_rsvps'%>
@@ -40,7 +40,7 @@
 
 <div id="add_event"></div>
 
-
+<!--new event handlebars template  -->
 <script id="new_event_template" type="text/x-handlebars-template">
   <h1>{{name}}</h1>
   <h3>Date: {{displayDate}}</h3>
