@@ -4,7 +4,11 @@ function Rsvp(attributes){
     this.event = new Event(attributes.event)
 }
 
-function success(json){
+Rsvp.prototype.renderLi = function(){
+  return Rsvp.template(this)
+}
+
+function showRsvps(json){
   json.forEach(function(item){
     const rsvp = new Rsvp(item)
     const results = rsvp.renderLi()
@@ -12,39 +16,21 @@ function success(json){
   });
 }
 
-Rsvp.error = function(response){
-  console.log('Sorry! Something went wrong', response)
-}
-
-
-// prefill and return template
-
-Rsvp.prototype.renderLi = function(){
-  return Rsvp.template(this)
-}
-
-
-$(document).ready(function(){
+$(function(){
   Rsvp.source = $("#guests-template").html();
   Rsvp.template = Handlebars.compile(Rsvp.source)
 
   $("a.show_rsvps").on('click', function(e){
-
     e.preventDefault()
 
     $.ajax({
       url: this.href,
       method: "GET",
       success: function(response){
-        // debugger
-        success(response)
-
-
+        showRsvps(response)
       }
-      // refractor to add error
-      // refractor to disable link
     })
-    var link = $(this).attr('href')
+    // var link = $(this).attr('href')
      $(this).removeAttr('href')
   })
 
