@@ -6,9 +6,19 @@
     <h2>You haven't posted any events yet.</h2>
 <% end %>
 
-<% @user_events.each do |event| %>
-  <p><%= link_to "#{event.name}", event_path(event) %></p>
-<% end %>
+<div class="events_display">
+  <% @user_events.each do |event| %>
+    <p><%= link_to "#{event.name}", event_path(event) %></p>
+  <% end %>
+</div>
+
+<!--button -->
+<button id="sort_events" data-id="<%=@user.id%>">Sort Events</button>
+
+<!--handlebars show event template  -->
+<script id="ordered-events-template" type="text/x-handlebars-template">
+  <p><a href="/events/{{id}}">{{name}}</a></p>
+</script>
 
 <!-- refractor attending events  and pluralize-->
 <% if future_rsvps(@user).size > 0 %>

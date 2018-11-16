@@ -3,7 +3,6 @@ class EventSerializer < ActiveModel::Serializer
   belongs_to :user
   has_many :rsvps
   has_many :attending_users
-  # , through: :rsvps, :source => :user
 
   def display_date
     self.object.date.strftime('%B %d, %Y')

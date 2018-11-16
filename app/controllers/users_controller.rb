@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   def show
     @rsvps = @user.rsvps
     @user_events = user_events
+    respond_to do |format|
+      format.html
+      format.json {render :json => @user}
+    end
   end
 
   def edit

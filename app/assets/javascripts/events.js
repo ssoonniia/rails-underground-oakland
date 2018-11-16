@@ -13,6 +13,23 @@ function Event(attributes){
   this.idOfNext = 0
 }
 
+// sort events function
+function sortEvents(response){
+  const orderedEvents = response.events.sort((a, b) => a.name.localeCompare(b.name))
+
+  $(".events_display").html('')
+
+  orderedEvents.map(e => {
+    const event = new Event(e)
+    const eventOrdTemp = event.renderOrdered()
+    $('.events_display').append(eventOrdTemp)
+  })
+}
+
+// ordered events
+Event.prototype.renderOrdered = function(){
+  return Event.orderedEventsTemplate(this)
+}
 // compile new event
 Event.prototype.renderEvent = function(){
   return Event.templateNewEvent(this)
@@ -49,6 +66,27 @@ function getEvent(json){
 
 
 $(function(){
+  // sorting events
+  Event.sourceOrderedEvents = $("#ordered-events-template").html()
+  Event.orderedEventsTemplate = Handlebars.compile(Event.sourceOrderedEvents)
+
+  $("#sort_events").on('click', function(e){
+
+    const url = `/users/${this.dataset.id}`
+
+     $.ajax({
+       url: url,
+       method: "GET",
+       dataType: 'json',
+       success: function(response){
+         sortEvents(response)
+       },
+       error: function(response){
+         alert('Woops! Something went wrong')
+       }
+     })
+  })
+
   // New event request
   $("#new_event.new_event").on('submit', function(y){
     y.preventDefault()
