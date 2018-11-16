@@ -1,8 +1,9 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :date, :time, :location, :cost, :description, :display_date, :display_time, :attending_users, :user 
+  attributes :id, :name, :date, :time, :location, :cost, :description, :display_date, :display_time, :attending_users, :user
   belongs_to :user
   has_many :rsvps
-  has_many :attending_users, through: :rsvps, :source => :user
+  has_many :attending_users
+  # , through: :rsvps, :source => :user
 
   def display_date
     self.object.date.strftime('%B %d, %Y')
