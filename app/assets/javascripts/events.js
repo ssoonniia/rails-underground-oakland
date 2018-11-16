@@ -13,7 +13,11 @@ function Event(attributes){
   this.idOfNext = 0
 }
 
-function successEvent(json){
+
+
+
+
+function getEvent(json){
   const event = new Event(json)
   let userEvents = event.user.events
   const findEvent = userEvents.filter(userEvent => userEvent.id === event.id)
@@ -22,13 +26,13 @@ function successEvent(json){
     event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
   }
 
-  var eventTemp = event.renderLi()
+  var eventTemp = event.renderNext()
   $('div#show_event').html("")
   $('div#show_event').html(eventTemp)
 }
 
 
-Event.prototype.renderLi = function(){
+Event.prototype.renderNext = function(){
   return Event.template(this)
 }
 
@@ -49,7 +53,7 @@ $(document).ready(function(){
      method: "GET",
      dataType: "json",
      success: function(response){
-       successEvent(response)
+       getEvent(response)
 
 
      }
@@ -71,20 +75,18 @@ $(document).ready(function(){
        data: $( this ).serialize(),
        processData: false,
        success: function(response){
-         debugger
-       successNewEvent(response)
-
-     }, error: function(response){
-       debugger
-       alert("Please complete the entire form before")
-     }
+         successNewEvent(response)
+       }, error: function(response){
+        alert("Please complete the entire form before")
+        }
      })
       $("form#new_event.new_event")[0].reset()
    })
-
-   function successNewEvent(json){
-     var event = new Event(json)
-     var newEventTemp = event.renderEvent()
-     $('div#add_event').html(newEventTemp)
-   }
 })
+
+
+function successNewEvent(json){
+  var event = new Event(json)
+  var newEventTemp = event.renderEvent()
+  $('div#add_event').html(newEventTemp)
+}
