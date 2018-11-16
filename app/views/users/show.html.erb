@@ -7,9 +7,7 @@
 <% end %>
 
 
-<div class="add_new_event">
-<h3><%=link_to 'Create A New Event', new_event_path %></h3>
-</div>
+
 
 <% @user_events.each do |event| %>
   <p><%= link_to "#{event.name}", event_path(event) %></p>
