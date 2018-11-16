@@ -24,7 +24,7 @@ Event.prototype.renderNext = function(){
 }
 
 // success function new event
-successNewEvent(json){
+function successNewEvent(json){
   const event = new Event(json)
   const newEventTemp = event.renderEvent()
   $('div#add_event').html(newEventTemp)
@@ -33,7 +33,7 @@ successNewEvent(json){
 // successFunction - for Next Event
 function getEvent(json){
   const event = new Event(json)
-  let userEvents = event.user.events
+  const userEvents = event.user.events
 
   // helper functions for get event
   const nextEventCheck = () => userEvents[userEvents.indexOf(findEvent[0]) + 1]
@@ -49,8 +49,7 @@ function getEvent(json){
 
 
 $(function(){
-
-  //New event
+  // New event request
   $("#new_event.new_event").on('submit', function(y){
     y.preventDefault()
 
@@ -70,10 +69,9 @@ $(function(){
       }
     })
     $("form#new_event.new_event")[0].reset()
-  })//end of new event
+  })
 
-
-  // Next event request
+// Show event request
   $('#show_event').on('click', 'a.next',function(e){
     e.preventDefault();
 
@@ -88,6 +86,5 @@ $(function(){
         getEvent(response)
       }
     })
-  })// end of next event request
-
+  })
 })
