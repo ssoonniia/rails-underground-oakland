@@ -24,7 +24,7 @@ Event.prototype.renderNext = function(){
 }
 
 // success function new event
-function successNewEvent(json){
+function newEvent(json){
   const event = new Event(json)
   const newEventTemp = event.renderEvent()
   $('div#add_event').html(newEventTemp)
@@ -62,7 +62,7 @@ $(function(){
       data: $( this ).serialize(),
       processData: false,
       success: function(response){
-        successNewEvent(response)
+        newEvent(response)
       },
       error: function(response){
         alert("Please complete the entire form before")
