@@ -2,18 +2,14 @@ function Rsvp(attributes){
     this.guest = attributes.guests,
     this.user = new User(attributes.user)
     this.event = new Event(attributes.event)
-    // this.event_id = attributes.event.id
-    // this.event = new Event(attributes.event)
 }
 
 function success(json){
   json.forEach(function(item){
-  var rsvp = new Rsvp(item)
-  // var results = rsvp.renderLi()
-
-
- return $("div#add_guests_"+String(rsvp.event.id)).append(rsvp.renderLi())
-});
+    const rsvp = new Rsvp(item)
+    const results = rsvp.renderLi()
+    return $("div#add_guests_"+String(rsvp.event.id)).append(results)
+  });
 }
 
 Rsvp.error = function(response){
