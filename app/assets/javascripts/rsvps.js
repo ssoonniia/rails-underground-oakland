@@ -1,7 +1,7 @@
 function Rsvp(attributes){
-    this.guest = attributes.guests,
-    this.user = new User(attributes.user)
-    this.event = new Event(attributes.event)
+  this.guest = attributes.guests,
+  this.user = new User(attributes.user)
+  this.event = new Event(attributes.event)
 }
 
 Rsvp.prototype.renderLi = function(){
@@ -30,52 +30,7 @@ $(function(){
         showRsvps(response)
       }
     })
-    // var link = $(this).attr('href')
+    // disable link after request
      $(this).removeAttr('href')
   })
-
-
-
-// new feature of add single rsvp
-
-Rsvp.sourceNewRsvp = $("#rsvp_template").html()
-Rsvp.templateNewRsvp = Handlebars.compile(Rsvp.sourceNewRsvp)
-
-$(".new_rsvp").on('submit', function(y){
-     y.preventDefault()
-
-  $.ajax({
-    url: this.action,
-    method: "POST",
-    data: $( this ).serialize(),
-    success: function(response){
-      successRsvp(response)
-    },
-    error: function(response){
-      console.log(response)
-    }
-  })
-  $("div#rsvp_form").html("")
-  // trying to render form after rsvp but now
-  // $(".add_rsvp_form").append("<%= j render partial: 'rsvp_form' %>")
-  // also tried this link
-  // <%= render partial: "rsvps/rsvp_form", locals:{user: @user, event: event, rsvp: Rsvp.new} %>
-
 })
-})
-
-
-
-
-Rsvp.prototype.renderRsvp = function(){
-  return Rsvp.templateNewRsvp(this)
-}
-
-
-function successRsvp(json){
-  var rsvp = new Rsvp(json)
-  var template = rsvp.renderRsvp()
-  $("div#add_guests_"+String(rsvp.event_id)).append(rsvp.renderLi())
-
-  $("div#guest_for_event_"+String(rsvp.event_id)).append(template)
-}
