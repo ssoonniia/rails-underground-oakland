@@ -23,7 +23,7 @@ Event.prototype.renderNext = function(){
   return Event.template(this)
 }
 
-// success function new event
+// success function - for new event
 function newEvent(json){
   const event = new Event(json)
   const newEventTemp = event.renderEvent()
