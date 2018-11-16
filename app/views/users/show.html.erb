@@ -1,7 +1,7 @@
 <h1><%=@user.username.titleize%>'s Underground Oakland Profile </h1>
 
 <% if has_events %>
-    <h2>You have posted <%=pluralize(@user_events.size, 'Event')%> </h2>
+    <h2>You have posted <%=pluralize(@user_events.size, 'event')%> </h2>
   <% else %>
     <h2>You haven't posted any events yet.</h2>
 <% end %>
