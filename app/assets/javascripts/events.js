@@ -84,7 +84,10 @@ $(function(){
       dataType: "json",
       success: function(response){
         getEvent(response)
-      }
+      },
+        error: function(response){
+          alert("Woops - something went wrong")
+        }
     })
   })
 })
