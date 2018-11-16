@@ -14,11 +14,10 @@ function Event(attributes){
 }
 
 function successEvent(json){
-  var event = new Event(json)
-  var userEvents = event.user.events
-  var findEvent = userEvents.filter(function(item){
-    return item.id === event.id
-  })
+  const event = new Event(json)
+  let userEvents = event.user.events
+  const findEvent = userEvents.filter(userEvent => userEvent.id === event.id)
+
   if (userEvents[userEvents.indexOf(findEvent[0]) + 1]){
     event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
   }
@@ -52,6 +51,7 @@ $(document).ready(function(){
      success: function(response){
        successEvent(response)
 
+
      }
      // close success
    })
@@ -69,10 +69,13 @@ $(document).ready(function(){
        url:this.action,
        method: "POST",
        data: $( this ).serialize(),
+       processData: false,
        success: function(response){
+         debugger
        successNewEvent(response)
 
      }, error: function(response){
+       debugger
        alert("Please complete the entire form before")
      }
      })
