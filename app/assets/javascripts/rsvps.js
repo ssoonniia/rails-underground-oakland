@@ -28,7 +28,10 @@ $(function(){
       method: "GET",
       success: function(response){
         showRsvps(response)
-      }
+      },
+        error: function(response){
+          alert('Woops! Something went wrong')
+        }
     })
     // disable link after request
      $(this).removeAttr('href')
