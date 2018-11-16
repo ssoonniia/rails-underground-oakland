@@ -13,18 +13,34 @@ function Event(attributes){
   this.idOfNext = 0
 }
 
+// compile new event
+Event.prototype.renderEvent = function(){
+  return Event.templateNewEvent(this)
+}
 
+// compile next event
+Event.prototype.renderNext = function(){
+  return Event.template(this)
+}
 
+// success function new event
+successNewEvent(json){
+  const event = new Event(json)
+  const newEventTemp = event.renderEvent()
+  $('div#add_event').html(newEventTemp)
+}
 
-
+// successFunction - for Next Event
 function getEvent(json){
   const event = new Event(json)
   let userEvents = event.user.events
+
+  // helper functions for get event
+  const nextEventCheck = () => userEvents[userEvents.indexOf(findEvent[0]) + 1]
+  const setIdOfNext = () => userEvents[userEvents.indexOf(findEvent[0]) + 1].id
   const findEvent = userEvents.filter(userEvent => userEvent.id === event.id)
 
-  if (userEvents[userEvents.indexOf(findEvent[0]) + 1]){
-    event.idOfNext = userEvents[userEvents.indexOf(findEvent[0]) + 1].id
-  }
+  event.idOfNext = nextEventCheck() ? setIdOfNext() : 0
 
   var eventTemp = event.renderNext()
   $('div#show_event').html("")
@@ -32,61 +48,46 @@ function getEvent(json){
 }
 
 
-Event.prototype.renderNext = function(){
-  return Event.template(this)
-}
+$(function(){
 
-Event.prototype.renderEvent=function(){
-  return Event.templateNewEvent(this)
-}
+  //New event
+  $("#new_event.new_event").on('submit', function(y){
+    y.preventDefault()
 
+    Event.sourceNewEvent = $("#new_event_template").html()
+    Event.templateNewEvent = Handlebars.compile(Event.sourceNewEvent)
 
-$(document).ready(function(){
- $('#show_event').on('click', 'a.next',function(e){
-   e.preventDefault();
-
-   Event.templateSource = $('#event-template').html()
-   Event.template = Handlebars.compile(Event.templateSource);
-
-   $.ajax({
-     url: this.href,
-     method: "GET",
-     dataType: "json",
-     success: function(response){
-       getEvent(response)
-
-
-     }
-     // close success
-   })
-   // close ajax
-  })
-   // close click event
-   $("#new_event.new_event").on('submit', function(y){
-     y.preventDefault()
-
-
-     Event.sourceNewEvent = $("#new_event_template").html()
-     Event.templateNewEvent = Handlebars.compile(Event.sourceNewEvent)
-
-     $.ajax({
-       url:this.action,
-       method: "POST",
-       data: $( this ).serialize(),
-       processData: false,
-       success: function(response){
-         successNewEvent(response)
-       }, error: function(response){
+    $.ajax({
+      url:this.action,
+      method: "POST",
+      data: $( this ).serialize(),
+      processData: false,
+      success: function(response){
+        successNewEvent(response)
+      },
+      error: function(response){
         alert("Please complete the entire form before")
-        }
-     })
-      $("form#new_event.new_event")[0].reset()
-   })
+      }
+    })
+    $("form#new_event.new_event")[0].reset()
+  })//end of new event
+
+
+  // Next event request
+  $('#show_event').on('click', 'a.next',function(e){
+    e.preventDefault();
+
+    Event.templateSource = $('#event-template').html()
+    Event.template = Handlebars.compile(Event.templateSource);
+
+    $.ajax({
+      url: this.href,
+      method: "GET",
+      dataType: "json",
+      success: function(response){
+        getEvent(response)
+      }
+    })
+  })// end of next event request
+
 })
-
-
-function successNewEvent(json){
-  var event = new Event(json)
-  var newEventTemp = event.renderEvent()
-  $('div#add_event').html(newEventTemp)
-}
