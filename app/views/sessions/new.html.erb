@@ -1,6 +1,6 @@
-<h1>Underground Oakland</h1>
-<h2>Sign In</h2>
-
+<div id="title">Underground Oakland
+ <br>Sign In</br>
+</div>
 <%= form_for @user, url: login_path(@user), method: :post do  |f|%>
   <%= f.label :username %>
   <%= f.text_field :username %>
