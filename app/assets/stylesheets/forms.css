@@ -1,0 +1,7 @@
+form#new_user{
+  position: relative;
+  left: 20px;
+  font-family: 'Rock Salt', cursive;
+  color: white;
+  text-shadow: 1px 2px black;
+}
