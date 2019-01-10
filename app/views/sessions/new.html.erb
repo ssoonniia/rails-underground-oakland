@@ -1,10 +1,10 @@
-<div id="title">Underground Oakland Events
- <br>Sign In</br>
+<div id="title">Underground Oakland Events<br></br>
+  Sign In
 </div>
 <%= form_for @user, :html => {:class => "form"}, url: login_path(@user),   method: :post do  |f|%>
   <%= f.label :username %>
   <%= f.text_field :username %>
   <%= f.label :password %>
   <%= f.password_field :password %>
-  <%=f.submit 'Log In' %>
+  <%=f.submit 'Log In', :id => "log-in" %>
 <% end %>

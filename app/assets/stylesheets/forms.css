@@ -5,3 +5,14 @@ form#new_user{
   color: white;
   text-shadow: 1px 2px black;
 }
+
+
+input{
+  font-family: sans-serif;
+  background: rgba(255,255,255,0.4)
+}
+
+input#log-in{
+  font-family: 'Rock Salt', cursive;
+    background: white
+}
