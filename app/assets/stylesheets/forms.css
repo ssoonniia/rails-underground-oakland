@@ -12,7 +12,7 @@ input{
   background: rgba(255,255,255,0.4)
 }
 
-input#log-in{
+input#submit{
   font-family: 'Rock Salt', cursive;
     background: white
 }
