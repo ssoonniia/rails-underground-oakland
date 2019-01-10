@@ -21,7 +21,9 @@ $(function(){
   Rsvp.template = Handlebars.compile(Rsvp.source)
 
   $("a.show_rsvps").on('click', function(e){
-    e.preventDefault()
+      e.preventDefault()
+    alert("clicked")
+
 
     $.ajax({
       url: this.href,
