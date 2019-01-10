@@ -34,7 +34,13 @@ div#home{
 
 }
 
+div#title{
 
+  font-family: 'Rock Salt', cursive;
+  font-size: 60px;
+  color: #14B67D;
+  text-shadow: 3px 2px black;
+}
 
 body{
 
