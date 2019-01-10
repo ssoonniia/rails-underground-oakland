@@ -1,0 +1,16 @@
+div#home {
+  position: relative;
+  top: 70px;
+  left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+
+  font-size: 25px;
+  color: #14B67D;
+  font-family: 'Rock Salt', cursive;
+  text-shadow: 3px 2px black;
+  color: #14B67D;
+
+}
