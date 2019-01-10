@@ -25,11 +25,24 @@ div#home{
   flex-direction: column;
   align-items: center;
 
-  font-family: serif;
+  font-family: 'Rock Salt', cursive;
   padding: 20px;
   font-size: 20px;
   color: #14B67D;
   border-radius: 5px;
   border: 2px solid #14B67D;
+
+}
+
+
+
+body{
+
+  background: url('http://www.illuminaries.net/images/oakland_athletics_pge_stomper_rise_grind_mural_01.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #23232B;
+  background-size: 100% 100%;
 
 }
