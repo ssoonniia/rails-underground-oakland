@@ -11,33 +11,41 @@
 
 
 <% @events.each do |event| %>
-  <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
+  <div class=event-container>
+    <div class=item>
+      <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
 
-  <div id="guest_for_event_<%=event.id%>"></div>
-  <% if future_event?(event) && !already_rsvp(@user, event) %>
-    <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
-  <% end %>
-
-<!--handlebars confirmed rsvp template -->
-<script id="rsvp_template" type="text/x-handlebars-template">
-  <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
-</script>
+      <div id="guest_for_event_<%=event.id%>"></div>
+        <% if future_event?(event) && !already_rsvp(@user, event) %>
+          <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+        <% end %>
 
 
-<div class="add_rsvp_form"></div>
+    <!--handlebars confirmed rsvp template -->
+      <script id="rsvp_template" type="text/x-handlebars-template">
+        <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
+      </script>
 
-  <% if event.rsvps.size > 0 %>
-    <%= link_to 'Guest List', event_rsvps_path(event), :class => 'show_rsvps'%>
-  <% end %>
-    <div id="add_guests_<%=event.id %>"></div>
+
+
+      <div class="add_rsvp_form"></div>
+
+        <% if event.rsvps.size > 0 %>
+          <%= link_to 'Guest List', event_rsvps_path(event), :class => 'show_rsvps'%>
+        <% end %>
+
+        <div id="add_guests_<%=event.id %>"></div>
+
+  </div>  <!--end of item div  -->
 <% end %>
+
 
 <script id="guests-template" type="text/x-handlebars-template">
   <ul>
     <li>{{user.username}} is attending with {{guest}} guests</li>
   </ul>
 </script>
-
+</div><!--end of events-container div  -->
 <div id="add_event"></div>
 
 <!--new event handlebars template  -->
