@@ -1,4 +1,5 @@
-form#new_user{
+
+.form{
   position: relative;
   left: 20px;
   font-family: 'Rock Salt', cursive;
@@ -14,5 +15,5 @@ input{
 
 input#submit{
   font-family: 'Rock Salt', cursive;
-    background: white
+  background: white
 }

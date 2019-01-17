@@ -1,0 +1,22 @@
+
+.event-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  color: red; */
+
+}
+
+div.item{
+  background: rgba(225, 225, 224,0.8);
+  padding: 10px;
+  margin: 10px;
+ flex-shrink:5;
+ flex-wrap: wrap;
+ font-family: 'Rock Salt', cursive;
+
+}
