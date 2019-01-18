@@ -1,10 +1,13 @@
-<h1><%=@user.username.titleize%>'s Underground Oakland Profile </h1>
+<div id=profile-title><%=@user.username.titleize%>'s Underground Oakland Profile </div>
 
-<% if has_events %>
-    <h2>You have posted <%=pluralize(@user_events.size, 'event')%> </h2>
-  <% else %>
-    <h2>You haven't posted any events yet.</h2>
-<% end %>
+<div id=user-info>
+  <% if has_events %>
+      <h2>You have posted <%=pluralize(@user_events.size, 'event')%> </h2>
+    <% else %>
+      <h2>You haven't posted any events yet.</h2>
+  <% end %>
+</div>
+
 
 <div class="events_display">
   <% @user_events.each do |event| %>
