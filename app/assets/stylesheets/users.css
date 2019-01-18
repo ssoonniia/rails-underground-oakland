@@ -1,0 +1,24 @@
+div#profile-title{
+  font-family: 'Rock Salt', cursive;
+  font-size: 30px;
+  color: #14B67D;
+  text-shadow: 3px 2px black;
+}
+
+div#user-info{
+  font-family: 'Rock Salt', cursive;
+  font-size: 20px;
+  color: black;
+  text-shadow: 3px 2px #14B67D;
+  text-align: center;
+  background: rgba(225, 225, 224,0.8);
+}
+
+div.events_display{
+  font-family: 'Rock Salt', cursive;
+  font-size: 20px;
+  color: black;
+  text-shadow: 3px 2px #14B67D;
+  background: rgba(225, 225, 224,0.8);
+  text-align: center
+}
