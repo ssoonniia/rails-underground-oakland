@@ -3,7 +3,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+
   /* display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -15,8 +16,16 @@ div.item{
   background: rgba(225, 225, 224,0.8);
   padding: 10px;
   margin: 10px;
- flex-shrink:5;
- flex-wrap: wrap;
- font-family: 'Rock Salt', cursive;
+  font-family: 'Rock Salt', cursive;
+  flex-basis: 10%;
+  flex-grow: 5;
+}
 
+div#show_event{
+  background: rgba(225, 225, 224,0.8);
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+  padding: 10px;
+  margin: 10px;
+  text-shadow: 3px 2px #14B67D;
 }
