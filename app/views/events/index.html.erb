@@ -1,18 +1,20 @@
-<h1>Events in Oakland</h1>
+<br></br>
+<div id='title'>Events in Oakland</div>
 <br></br>
 
 <!--filter option -->
-<h3>Filter Events:</h3>
+<div id='filter-section'>
+  <div id='filter'>Filter Events:</div>
 
-<%= form_tag('/events', method: 'get') do %>
-  <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
-  <%= submit_tag "Filter" %>
-<% end %>
-
-
+  <%= form_tag('/events', method: 'get') do %>
+    <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+<div>
+<div class="event-container">
 <% @events.each do |event| %>
-  <div class=event-container>
-    <div class=item>
+
+    <div class="item">
       <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
 
       <div id="guest_for_event_<%=event.id%>"></div>
@@ -22,9 +24,7 @@
 
 
     <!--handlebars confirmed rsvp template -->
-      <script id="rsvp_template" type="text/x-handlebars-template">
-        <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
-      </script>
+
 
 
 
@@ -39,6 +39,9 @@
   </div>  <!--end of item div  -->
 <% end %>
 
+<script id="rsvp_template" type="text/x-handlebars-template">
+  <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
+</script>
 
 <script id="guests-template" type="text/x-handlebars-template">
   <ul>
@@ -46,7 +49,11 @@
   </ul>
 </script>
 </div><!--end of events-container div  -->
-<div id="add_event"></div>
+
+
+<br></br>
+<br></br>
+<div id="add_event "></div>
 
 <!--new event handlebars template  -->
 <script id="new_event_template" type="text/x-handlebars-template">

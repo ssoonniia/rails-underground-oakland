@@ -1,24 +1,21 @@
 
 .event-container{
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   flex-flow: row wrap;
-
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  color: red; */
-
+ height: 600px;
+ align-items: center;
+   justify-content: center;
 }
 
 div.item{
+  text-align: center;
+  flex: 0 1 400px;
   background: rgba(225, 225, 224,0.8);
   padding: 10px;
-  margin: 10px;
-  font-family: 'Rock Salt', cursive;
-  flex-basis: 10%;
-  flex-grow: 5;
+  margin: 20px;
+  font-family: 'Amatic SC', cursive;
+   font-weight: bold;
+
 }
 
 div#show_event{
@@ -28,4 +25,19 @@ div#show_event{
   padding: 10px;
   margin: 10px;
   text-shadow: 3px 2px #14B67D;
+}
+
+h1 {
+  font-family: 'Rock Salt', cursive;
+  font-size: 2em;
+  text-shadow: 3px 2px #14B67D;
+}
+
+div#filter{
+  font-family: 'Rock Salt', cursive;
+  font-size: 20px;
+}
+
+div#filter-section{
+  margin-left: 40px;
 }
