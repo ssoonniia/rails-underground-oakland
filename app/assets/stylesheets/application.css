@@ -31,3 +31,13 @@ body{
   background-color: #23232B;
   background-size: 100% 100%;
 }
+
+
+#link{
+  background-color: black;
+}
+
+a.nav-link{
+  color: black;
+  text-shadow: 0px 0px
+}
