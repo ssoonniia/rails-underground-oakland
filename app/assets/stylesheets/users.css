@@ -3,22 +3,83 @@ div#profile-title{
   font-size: 30px;
   color: #14B67D;
   text-shadow: 3px 2px black;
+  margin-top: 40px;
 }
 
 div#user-info{
+  position: relative;
   font-family: 'Rock Salt', cursive;
   font-size: 20px;
   color: black;
-  text-shadow: 3px 2px #14B67D;
+  /* text-shadow: 3px 2px #14B67D; */
+  content-align: center;
   text-align: center;
-  background: rgba(225, 225, 224,0.8);
+  background: rgba(225, 225, 224,0.7);
+  width: 40em;
+  margin-left: 40px;
+  margin-top: 40px;
 }
 
 div.events_display{
+  display: flex;
+  flex-flow: row wrap;
+  width: 40em;
+
+}
+
+p#event{
+  border-style: outset;
+  padding: 10px;
+  margin: 20px;
+  text-align: left;
+}
+
+p.dashboard{
+    text-shadow: 0px 0px #14B67D;
+    margin-right: 600px;
+    text-decoration: underline;
+
+}
+
+div#user-rsvp{
+  background: rgba(225, 225, 224,0.7);
+  padding: 10px;
+  margin: 30px;
+  margin-top: 40px;
+
+}
+
+div#profile-container{
+  display: flex;
   font-family: 'Rock Salt', cursive;
-  font-size: 20px;
+
+
+}
+
+div#rsvp_details{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: bold;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+div#rsvp{
+  border-style: outset;
+      flex: 1 1 0;
+}
+
+.event{
+    text-shadow: 3px 2px #14B67D;
+    font-size: 25px;
+    text-align: center;
+}
+
+a{
   color: black;
   text-shadow: 3px 2px #14B67D;
-  background: rgba(225, 225, 224,0.8);
-  text-align: center
+}
+
+.user-title{
+  text-align: center;
 }
