@@ -17,18 +17,19 @@ div#home {
 
 .navbar-expand-lg {
     background: rgba(225, 225, 224,0.8);
-    font-family: 'Rock Salt', cursive, !important;
-    text-shadow: 1px 2px black;
-    color: #14B67D;
-    font-size: 25px;
+    /* text-shadow: 1px 2px black; */
+    /* font-family: 'Rock Salt', cursive, !important;
+
+    color: black;
+    font-size: 25px; */
 }
 
 .navbar-expand-lg.nav-link{
-  color: #14B67D;
+  /* color: #14B67D; */
 
 }
 
 .navbar-brand {
-    font-size: 40px;
-    position: relative;
+    /* font-size: 40px;
+    position: relative; */
 }
