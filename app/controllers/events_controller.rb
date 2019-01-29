@@ -24,11 +24,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params)
-    @event.user_id = @user.id
+    @event.user_id = current_user.id
     if @event.save
-        render :json => @event
+      redirect_to event_path(@event)
     else
-      render :new => @event.errors
+      render :new
     end
   end
 
