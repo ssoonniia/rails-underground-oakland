@@ -17,3 +17,25 @@ input#submit{
   font-family: 'Rock Salt', cursive;
   background: white
 }
+
+.edit_event{
+  display: table;
+  margin: 0px auto 0px auto;
+  margin-top: 60px;
+  padding: 30px;
+  background: rgba(225, 225, 224,0.8);
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+  box-shadow: 10px 5px 5px black;
+}
+
+form#edit_user.form{
+  display: table;
+  margin: 0px auto 0px auto;
+  margin-top: 60px;
+  padding: 30px;
+  background: rgba(225, 225, 224,0.8);
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+  box-shadow: 10px 5px 5px black;
+}
