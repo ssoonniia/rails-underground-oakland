@@ -11,13 +11,13 @@ div#user-info{
   font-family: 'Rock Salt', cursive;
   font-size: 20px;
   color: black;
-  /* text-shadow: 3px 2px #14B67D; */
   content-align: center;
   text-align: center;
-  background: rgba(225, 225, 224,0.7);
+  background: rgba(225, 225, 224,0.85);
   width: 40em;
   margin-left: 40px;
   margin-top: 40px;
+  box-shadow: 10px 5px 5px black;
 }
 
 div.events_display{
@@ -35,51 +35,63 @@ p#event{
 }
 
 p.dashboard{
-    text-shadow: 0px 0px #14B67D;
-    margin-right: 600px;
-    text-decoration: underline;
+  text-shadow: 3px 2px #14B67D;
+  margin-right: 600px;
+  text-decoration: underline;
 
 }
 
 div#user-rsvp{
-  background: rgba(225, 225, 224,0.7);
+  background: rgba(225, 225, 224,0.85);
   padding: 10px;
   margin: 30px;
   margin-top: 40px;
+  box-shadow: 10px 5px 5px black
 
 }
 
-div#profile-container{
+#profile-container{
   display: flex;
   font-family: 'Rock Salt', cursive;
+
 
 
 }
 
 div#rsvp_details{
-    font-family: 'Poppins', sans-serif;
-    text-decoration: bold;
-    font-size: 20px;
-    text-align: center;
-
+  font-family: 'Poppins', sans-serif;
+  text-decoration: bold;
+  font-size: 15px;
+  text-align: center;
 }
 
 div#rsvp{
   border-style: outset;
-      flex: 1 1 0;
+  flex: 1 1 0;
+
 }
 
 .event{
-    text-shadow: 3px 2px #14B67D;
-    font-size: 25px;
-    text-align: center;
+  text-shadow: 3px 2px #14B67D;
+  font-size: 20px;
+  text-align: center;
 }
 
 a{
   color: black;
+  font-size: 15px;
   text-shadow: 3px 2px #14B67D;
 }
 
 .user-title{
   text-align: center;
+}
+
+div.edit_link a{
+  position: relative;
+  font-size: 20px;
+  border-style: outset;
+  box-shadow: 10px 5px 5px black;
+  background: rgba(225, 225, 224,0.7);
+  text-shadow: 0px 0px #14B67D;
 }
