@@ -18,9 +18,21 @@
 
 div#title{
   font-family: 'Rock Salt', cursive;
-  font-size: 60px;
+  font-size: 40px;
   color: #14B67D;
-  text-shadow: 3px 2px black;
+  text-shadow: 3px 5px black;
+}
+
+
+p{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+h1 {
+  font-family: 'Rock Salt', cursive;
+  font-size: 2em;
+  text-shadow: 3px 2px #14B67D;
 }
 
 body{
@@ -40,4 +52,22 @@ body{
 a.nav-link{
   color: black;
   text-shadow: 0px 0px
+}
+
+.center-title{
+  text-align: center;
+  margin-top: 40px;
+  color: white;
+}
+
+
+.center-container{
+  display: table;
+  margin: 0px auto 0px auto;
+  margin-top: 60px;
+  padding: 30px;
+  background: rgba(225, 225, 224,0.8);
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+  box-shadow: 10px 5px 5px black;
 }
