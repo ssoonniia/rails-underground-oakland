@@ -1,55 +1,53 @@
-<div id="profile-title"><%=@user.username.titleize%> </div>
+<div id="profile-title"><%=@user.username.titleize%></div>
 
-<div id="profile-container">
+<section id="profile-container">
 
   <div id=user-info>
-      <p class='dashboard'>  Your dashboard <p>
+
+    <p class='dashboard'>Your dashboard</p>
     <% if has_events %>
-        <h2>You have posted <%=pluralize(@user_events.size, 'event')%> </h2>
+        <h2>You have posted <%=pluralize(@user_events.size, 'event')%></h2>
       <% else %>
         <h2>You haven't posted any events yet.</h2>
     <% end %>
 
+    <div class="events_display">
+      <% @user_events.each do |event| %>
+        <p id="event"><%= link_to "#{event.name}", event_path(event) %></p>
+      <% end %>
+    </div>
 
-
-  <div class="events_display">
-    <% @user_events.each do |event| %>
-      <p id="event"><%= link_to "#{event.name}", event_path(event) %></p>
-
-    <% end %>
-  </div>
   </div> <!--end user info-->
-  <!--button -->
-  <!-- <button id="sort_events" data-id="<%=@user.id%>">Sort Events</button> -->
 
   <!--handlebars show event template  -->
   <script id="ordered-events-template" type="text/x-handlebars-template">
     <p><a href="/events/{{id}}">{{name}}</a></p>
   </script>
 
-  <!-- refractor attending events  and pluralize-->
+  <!-- refractor attending events and pluralize-->
   <div id="user-rsvp">
     <% if future_rsvps(@user).size > 0 %>
-      <h2 class='user-title'> You are attending <%= pluralize(@user.attending_events.size, 'event') %> </h2>
+      <h2 class='user-title'> You are attending <%= pluralize(@user.attending_events.size, 'event') %></h2>
     <% end %>
 
     <% future_rsvps(@user).each do |event| %>
       <div id='rsvp'>
-      <p class='event'><%= event.name %></p>
-        <div id="rsvp_details">
-          <p>on<%= dispaly_date(event) %> </p>
-          <p>at <%=display_time(event)%>
-          <% event.rsvps.each do |rsvp| %>
-            <% if rsvp.user_id == @user.id %>
-              <p><%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %></p>
-        </div>
-      </div>
-        <% end %>
-      <% end %>
+        <p class='event'><%= event.name %></p>
+          <div id="rsvp_details">
+            <p>on <%= dispaly_date(event) %></p>
+            <p>at <%=display_time(event)%></p>
+            <% event.rsvps.each do |rsvp| %>
+              <% if rsvp.user_id == @user.id %>
+                <p><%= button_to 'Cancel RSVP', rsvp_path(rsvp), method: :delete %></p>
+              <% end %>
+            <% end %>
+          </div>
+      </div><!--rsvp_details-->
     <% end %>
-  </div>
+  </div> <!--user-rsvp-->
 
-
-</div> <!-- end profile container -->
-
-  <h3><%= link_to 'Edit Profile', edit_user_path(@user)%></h3>
+</section> <!-- end profile container -->
+<br></br>
+<div class="edit_link">
+  <%= link_to 'Edit Profile', edit_user_path(@user)%>
+</div>

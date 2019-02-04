@@ -1,6 +1,6 @@
 <%= render "layouts/errors", object: @user %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form"}  do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
   <%= f.label :email %>
