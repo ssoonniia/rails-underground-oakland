@@ -80,7 +80,7 @@ div#rsvp{
 a{
   color: black;
   font-size: 15px;
-  text-shadow: 3px 2px #14B67D;
+  /* text-shadow: 3px 2px #14B67D; */
 }
 
 .user-title{

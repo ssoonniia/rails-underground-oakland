@@ -16,26 +16,27 @@ function showRsvps(json){
   });
 }
 
-$(function(){
-  Rsvp.source = $("#guests-template").html();
-  Rsvp.template = Handlebars.compile(Rsvp.source)
-
-  $("a.show_rsvps").on('click', function(e){
-      e.preventDefault()
-    alert("clicked")
-
-
-    $.ajax({
-      url: this.href,
-      method: "GET",
-      success: function(response){
-        showRsvps(response)
-      },
-        error: function(response){
-          alert('Woops! Something went wrong')
-        }
-    })
-    // disable link after request
-     $(this).removeAttr('href')
-  })
-})
+// $(function(){
+  // alert('working')
+  // Rsvp.source = $("#guests-template").html();
+  // Rsvp.template = Handlebars.compile(Rsvp.source)
+  //
+  // $("div.event-container div.item").on('click','a.show_rsvps', function(e){
+  //   alert("clicked")
+  //     e.preventDefault()
+  //
+  //
+  //   $.ajax({
+  //     url: this.href,
+  //     method: "GET",
+  //     success: function(response){
+  //       showRsvps(response)
+  //     },
+  //       error: function(response){
+  //         alert('Woops! Something went wrong')
+  //       }
+  //   })
+  //   // disable link after request
+  //    $(this).removeAttr('href')
+  // })
+// })

@@ -66,11 +66,33 @@ function getEvent(json){
 
 
 $(function(){
+// show rsvp
+  Rsvp.source = $("#guests-template").html();
+  Rsvp.template = Handlebars.compile(Rsvp.source)
+
+  $("div.item").on('click','a.show_rsvps', function(e){
+      e.preventDefault()
+
+
+    $.ajax({
+      url: this.href,
+      method: "GET",
+      success: function(response){
+        showRsvps(response)
+      },
+        error: function(response){
+          alert('Woops! Something went wrong')
+        }
+    })
+    // disable link after request
+     $(this).removeAttr('href')
+  })
   // sorting events
   Event.sourceOrderedEvents = $("#ordered-events-template").html()
   Event.orderedEventsTemplate = Handlebars.compile(Event.sourceOrderedEvents)
 
   $("#sort_events").on('click', function(e){
+    alert('was')
 
     const url = `/users/${this.dataset.id}`
 
@@ -88,8 +110,10 @@ $(function(){
   })
 
   // New event request
-  $("#new_event.new_event").on('submit', function(y){
-    y.preventDefault()
+  $("div.add_event").on('submit', 'form#new_event.new_event' function(y){
+   y.preventDefault()
+    alert('event')
+
 
     Event.sourceNewEvent = $("#new_event_template").html()
     Event.templateNewEvent = Handlebars.compile(Event.sourceNewEvent)
@@ -111,6 +135,7 @@ $(function(){
 
 // Show event request
   $('#show_event').on('click', 'a.next',function(e){
+  
     e.preventDefault();
 
     Event.templateSource = $('#event-template').html()
