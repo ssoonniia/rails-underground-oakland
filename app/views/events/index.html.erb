@@ -1,32 +1,33 @@
 <br></br>
 <div id='title'>Events in Oakland</div>
-<br></br>
+<br>
+
+<section id="add_event_button">
+  <%=link_to 'Add Event', new_event_path %>
+</section>
 
 <!--filter option -->
 <div id='filter-section'>
   <div id='filter'>Filter Events:</div>
-
   <%= form_tag('/events', method: 'get') do %>
     <%= select_tag "date", options_for_select(['Today Events', 'Future Events', 'Old Events']), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 <div>
+
 <div class="event-container">
-<% @events.each do |event| %>
+  <% @events.each do |event| %>
 
     <div class="item">
-      <%= render partial: "event_info", locals: {event: event}, class: 'events' %><br></br>
+      <%= render partial: "event_info", locals: {event: event}, class: 'events' %>
 
       <div id="guest_for_event_<%=event.id%>"></div>
         <% if future_event?(event) && !already_rsvp(@user, event) %>
-          <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %> </h3>
+          <h3><%=link_to 'RSVP', new_user_event_rsvp_path(session[:user_id], event) %></h3>
         <% end %>
 
 
     <!--handlebars confirmed rsvp template -->
-
-
-
 
       <div class="add_rsvp_form"></div>
 
@@ -36,18 +37,18 @@
 
         <div id="add_guests_<%=event.id %>"></div>
 
-  </div>  <!--end of item div  -->
-<% end %>
+    </div>  <!--end of item div  -->
+  <% end %>
 
-<script id="rsvp_template" type="text/x-handlebars-template">
-  <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
-</script>
+  <script id="rsvp_template" type="text/x-handlebars-template">
+    <p>Thanks for RSVPing! You're going with {{guest}} guests.</p>
+  </script>
 
-<script id="guests-template" type="text/x-handlebars-template">
-  <ul>
-    <li>{{user.username}} is attending with {{guest}} guests</li>
-  </ul>
-</script>
+  <script id="guests-template" type="text/x-handlebars-template">
+    <ul>
+      <li>{{user.username}} is attending with {{guest}} guests</li>
+    </ul>
+  </script>
 </div><!--end of events-container div  -->
 
 
@@ -67,7 +68,7 @@
 </script>
 
 <br></br>
-<div id="new_event">
+<!-- <div id='add_event'>
   <h1>Add an Event</h1>
   <%=render  partial: "form", locals:{event: @event = Event.new}%>
-</div>
+<div> -->
