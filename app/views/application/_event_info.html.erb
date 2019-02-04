@@ -1,7 +1,6 @@
   <h1><%= event.name %></h1>
-  <br></br>
-  <p><%= dispaly_date(event) %></p>
-  <p>at <%= display_time(event) %></p>
-  <p>Cost: <%= event.cost %></p>
-  <p>Location: <%= event.location %></p>
-  <p>Description: <%= event.description %></p>
+  <br>
+  <p><%= dispaly_date(event) %><strong> at </strong><%= display_time(event) %></p>
+  <p><strong>Cost:</strong>  <%= event.cost %></p>
+  <p><strong>Location:</strong>  <%= event.location %></p>
+  <p><strong>Description:</strong>  <%= event.description %></p>

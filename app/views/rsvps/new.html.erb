@@ -1,11 +1,11 @@
-Please review and confirm your RSVP.
-<%= render "layouts/errors", object: @rsvp %>
-<%= render partial: "event_info", locals: {event: @event} %>
+<section class="center-container">
+  Please review and confirm your RSVP.
+  <br></br>
+  <%= render "layouts/errors", object: @rsvp %>
+  <%= render partial: "event_info", locals: {event: @event} %>
 
-<%= form_for [@user, @event, @rsvp] do |f| %>
-    <h3>Number of Guests: <%= f.number_field :guests, min: 0 %></h3>
-    <%= f.submit %>
-<% end %>
-
-
-<br></br>
+  <%= form_for [@user, @event, @rsvp] do |f| %>
+      <p>Number of Guests: <%= f.number_field :guests, min: 0 %></p>
+      <%= f.submit %>
+  <% end %>
+</section>
